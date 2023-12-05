@@ -1,0 +1,59 @@
+body{
+    overflow: hidden;
+    /* background: linear-gradient(
+        to left,
+        white 0%,
+        white 50%,
+        #ededed 50%,
+        #ededed 0%
+    ); */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex: row;
+}
+
+.left{
+    width: 50vw;
+    height: 100vh;
+    background-color: #ededed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-in-form{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;   
+
+}
+
+h2{
+    text-align: center;
+    font-weight: 700;
+}
+
+.sign-up-text{
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+
+input[type='checkbox']:checked{
+    background-color: black;
+    border-color: black;
+}
+
+.form-check-input:focus{
+    border-color: #FF0000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.form-control:focus {
+    border-color: #FF0000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
