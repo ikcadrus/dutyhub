@@ -22,6 +22,29 @@ body{
     justify-content: center;
 }
 
+/* @media all and (max-width: 768px){
+    .left{
+        display: none;
+    }
+    .container-fluid{
+        width: auto;
+        margin:0;
+    }
+
+
+    .body{
+        display: block;
+    }
+
+    .row{
+        display: block;
+    }
+
+    .sign-in-form{
+        width: 100vw;
+    }
+} */
+
 .sign-in-form{
     width: 50vw;
     height: 100vh;
@@ -34,6 +57,12 @@ body{
 
 h2{
     text-align: center;
+    font-weight: 700;
+}
+
+.forgot-password-text{
+    text-decoration: none;
+    color: black;
     font-weight: 700;
 }
 
@@ -56,4 +85,12 @@ input[type='checkbox']:checked{
 .form-control:focus {
     border-color: #FF0000;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.bi-eye-fill{
+    position: absolute;
+    top: 20%;
+    right: 3%;
+    font-size: 150%;
+    color: black;
 }
