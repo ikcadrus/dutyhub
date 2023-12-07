@@ -14,7 +14,6 @@ body{
 }
 
 .left{
-    width: 50vw;
     height: 100vh;
     background-color: #ededed;
     display: flex;
@@ -22,37 +21,12 @@ body{
     justify-content: center;
 }
 
-/* @media all and (max-width: 768px){
-    .left{
-        display: none;
-    }
-    .container-fluid{
-        width: auto;
-        margin:0;
-    }
-
-
-    .body{
-        display: block;
-    }
-
-    .row{
-        display: block;
-    }
-
-    .sign-in-form{
-        width: 100vw;
-    }
-} */
-
 .sign-in-form{
-    width: 50vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: left;   
-
 }
 
 h2{
@@ -93,4 +67,27 @@ input[type='checkbox']:checked{
     right: 3%;
     font-size: 150%;
     color: black;
+}
+
+@media all and (max-width: 768px){
+    
+    body{
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+    .left{
+        height: 25%;
+    }
+
+    .logo{
+        width: 50%;
+    }
+
+    .sign-in-form{
+        max-height: 50vh;
+        display: block;
+        margin-top: 5%;
+    }
+
 }

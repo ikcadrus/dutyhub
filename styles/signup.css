@@ -6,14 +6,70 @@ body{
     flex: row;
 }
 
-.logo-img{
+.left{
+    height: 100vh;
+    background-color: #ededed;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.logo-text{
+.sign-up-form{
+    height: 100vh;
     display: flex;
-    text-align: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: left;
+}
+
+h2{
+    text-align: center;
+    font-weight: 700;
+}
+
+.sign-in-text{
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+
+.form-check-input:focus{
+    border-color: #FF0000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.form-control:focus {
+    border-color: #FF0000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.bi-eye-fill{
+    position: absolute;
+    top: 20%;
+    right: 3%;
+    font-size: 150%;
+    color: black;
+}
+
+@media all and (max-width: 768px){
+    
+    body{
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+    .left{
+        height: 25%;
+    }
+
+    .logo{
+        width: 50%;
+    }
+
+    .sign-up-form{
+        max-height: 50vh;
+        display: block;
+        margin-top: 5%;
+    }
+
 }

@@ -12,12 +12,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <div class="container-fluid">
             <div class="row">
-                <div class="left col-6">
+                <div class="left col-12 col-sm-12 col-md-6">
                     <div class="logo">
                         <img src="img/logo/logo-light.svg" width="100%">
                     </div>
                 </div>
-                <div class="right col-6">
+                <div class="right col-12 col-sm-12 col-md-6">
                     <form action="" method="POST" autocomplete="off">
                         <div class="sign-in-form">
                             <h2>Welcome to DutyHub</h2>
@@ -33,7 +33,7 @@
                                 <div class="form-floating">
                                     <input type="password" name="password" class="form-control" id="floating-password" placeholder="Password" required>
                                     <span onclick="showHidePassword()"><i class="bi bi-eye-fill" id="eye" onclick="changeIcon()"></i></span>
-                                    <label for="floating-password">Insert your password</label>
+                                    <label for="floating-password">Enter your password</label>
                                 </div>
                             </div>
                             <div class="check-section col-6 offset-3 mt-2">
