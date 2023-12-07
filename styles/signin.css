@@ -91,3 +91,8 @@ input[type='checkbox']:checked{
     }
 
 }
+
+.glow-hub:hover{
+    color:#FF0000;
+    filter: drop-shadow(0 0 1px #FF0000);
+}

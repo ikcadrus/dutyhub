@@ -14,13 +14,15 @@
             <div class="row">
                 <div class="left col-12 col-sm-12 col-md-6">
                     <div class="logo">
-                        <img src="img/logo/logo-light.svg" width="100%">
+                        <a href="index.php">
+                            <img src="img/logo/logo-light.svg" width="100%">
+                        </a>
                     </div>
                 </div>
                 <div class="right col-12 col-sm-12 col-md-6">
                     <form action="" method="POST" autocomplete="off">
                         <div class="sign-in-form">
-                            <h2>Welcome to DutyHub</h2>
+                            <h2>Welcome to Duty<span class="glow-hub">Hub</span></h2>
                             <div class="email-section col-6 offset-3 mt-2">
                                 <h5>Email</h5>
                                 <div class="form-floating">
