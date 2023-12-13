@@ -35,8 +35,6 @@ function showHideRePassword(){
     }
 }
 
-
-
 function changeIcon2(){
     let icon = document.getElementById("eye2");
     icon.classList.toggle("bi-eye-slash-fill");
