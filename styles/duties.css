@@ -16,6 +16,10 @@ body{
     font-size: 125%;
 }
 
+.nav-link{
+    text-align: center;
+}
+
 .collapse ul li i{
     font-weight: bold;
 }
@@ -60,19 +64,18 @@ h2{
     text-align: center;
 }
 
-
-.form-check{
+.duty .form-check{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 0;
+    padding-left: 5%;
 }
 
-.form-check .form-check-input{
+.accept .form-check .form-check-input{
     margin-left: 0em;
 }
 
-.form-check-input{
+.duty .form-check-input{
     width: 20px;
     height: 20px;
 }
@@ -87,6 +90,10 @@ h2{
     display: flex;
     align-items: center;
     justify-content: center; 
+}
+
+.duty-icon{
+    color: black;
 }
 
 .delete{
@@ -112,13 +119,88 @@ ul{
 }
 
 input[type='checkbox']:checked{
+    background-color: green;
+    border-color: green;
+}
+
+
+.form-switch input[type='checkbox']:checked{
     background-color: black;
     border-color: black;
 }
 
+.form-switch .form-check-input:not(:checked) {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='black'/%3e%3c/svg%3e");
+}
+
+.dark-mode-type:checked{
+    border-color: black;
+    box-shadow: inset 0 0 0 0 black, 0 0 4px black;
+}
+
+ .form-check-input:checked{
+    border-color: green;
+    box-shadow: inset 0 0 0 0 green, 0 0 4px green;
+}
+
 .form-check-input:focus{
-    border-color: #FF0000;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+    border-color: rgba(0, 128, 0, 0.5);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(0, 128, 0, 0.5);
+}
+
+.back-duties-text{
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+
+.dropdown-menu{
+    background-color: #ededed;
+}
+
+.form-switch .form-check-input:focus{
+    border-color: #ff000080;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem #ff000080;
+}
+
+
+.sub-menu:hover .language-menu{
+    display: block;
+    align-items: center;
+}
+
+.img-flag{
+    margin-top: -1.75%;
+}
+
+@media (min-width: 768px){
+    
+    .navbar-right{
+        float: right !important;
+        margin-right: -10px;
+    }
+
+}
+
+@media (min-width: 992px){
+
+    .language-menu{
+        margin-top: -5.5%;
+        justify-content: center;
+        width: 160px;
+        height: 87.33px;
+    }
+
+}
+
+@media (max-width: 991px){
+
+    .sub-menu:hover .language-menu{
+        display: flex;
+    }
+
 }
 
 @media (min-width: 768px){

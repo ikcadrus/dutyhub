@@ -1,5 +1,56 @@
+.custom-shape-divider-top-1704668404 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1704668404 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 500px;
+}
+
+.custom-shape-divider-top-1704668404 .shape-fill {
+    fill: #ededed;
+}
+
+.custom-shape-divider-bottom-1704670510 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1704670510 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 250px;
+}
+
+.custom-shape-divider-bottom-1704670510 .shape-fill {
+    fill: #ededed;
+}
+
+.left-text{
+    position: relative;
+    text-align: center;
+    justify-content: center;
+}
+
 .navbar{
     background-color: #ededed;
+}
+
+.nav-link{
+    text-align: center;
 }
 
 .navbar-brand{
@@ -42,11 +93,87 @@
     filter: drop-shadow(0 0 1px #FF0000);
 }
 
+.dropdown-menu{
+    background-color: #ededed;
+}
+
+input[type='checkbox']:checked{
+    background-color: black;
+    border-color: black;
+}
+
+.form-switch .form-check-input:not(:checked) {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='black'/%3e%3c/svg%3e");
+}
+
+.dark-mode-type:checked{
+    border-color: black;
+    box-shadow: inset 0 0 0 0 black, 0 0 4px black;
+}
+
+.form-check-input:focus{
+    border-color: #ff000080;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem #ff000080;
+}
+
+.sub-menu:hover .language-menu{
+    display: block;
+    align-items: center;
+}
+
+.img-flag{
+    margin-top: -1.75%;
+}
+
 @media (min-width: 768px){
     
     .navbar-right{
         float: right !important;
         margin-right: -10px;
+    }
+
+}
+
+@media (min-width: 992px){
+
+    .language-menu{
+        margin-top: -5.5%;
+        justify-content: center;
+        width: 160px;
+        height: 87.33px;
+    }
+
+}
+
+@media (max-width: 991px){
+
+    .sub-menu:hover .language-menu{
+        display: flex;
+    }
+
+}
+
+@media (max-width: 1199px){
+
+    .main-logo{
+        margin-top: -30%;
+    }
+
+}
+
+@media (max-width: 767px){
+
+    .main-logo{
+        margin-top: -35%;
+    }
+
+}
+
+@media (max-width: 500px){
+    
+    .main-logo{
+        margin-top: -45%;
     }
 
 }
