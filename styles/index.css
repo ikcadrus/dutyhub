@@ -1,3 +1,29 @@
+body::-webkit-scrollbar {
+    background-color: #fff;
+    width: 16px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #babac0;
+    border-radius: 16px;
+    border: 4px solid #fff;
+}
+
+body::-webkit-scrollbar-button {
+    display:none;
+}
+
+.vertical-center {
+    min-height: 92.75%;
+    min-height: 92.75vh; 
+    display: flex;
+    align-items: center;
+}
+
 .custom-shape-divider-top-1704668404 {
     position: absolute;
     top: 0;
@@ -40,8 +66,47 @@
 }
 
 .left-text{
-    position: relative;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+h1{
+    font-weight: 700;
+}
+
+h2{
+    color: #b2bec3;
+}
+
+.contact-us{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    text-align: center;
+}
+
+.contact-size{
+    height: 50px;
+}
+
+.contact-us:hover{
+    color: #FF0000;
+    font-size: 30px;
+    transition: 0.25s;
+}
+
+.right-text{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    position: relative;
     justify-content: center;
 }
 
@@ -152,28 +217,10 @@ input[type='checkbox']:checked{
         display: flex;
     }
 
-}
-
-@media (max-width: 1199px){
-
-    .main-logo{
-        margin-top: -30%;
-    }
-
-}
-
-@media (max-width: 767px){
-
-    .main-logo{
-        margin-top: -35%;
-    }
-
-}
-
-@media (max-width: 500px){
-    
-    .main-logo{
-        margin-top: -45%;
+    #footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
     }
 
 }
