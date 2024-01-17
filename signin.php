@@ -24,14 +24,14 @@
                         <div class="sign-in-form">
                             <h2>Welcome to Duty<span class="glow-hub">Hub</span></h2>
                             <h2>Sign in</h2>
-                            <div class="email-section col-6 offset-3 mt-2">
+                            <div class="email-section col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2">
                                 <h5>Email</h5>
                                 <div class="form-floating">
                                     <input type="email" name="email" class="form-control" id="floating-input" placeholder="Email" required>
                                     <label for="floating-input">user@example.com</label>
                                 </div>
                             </div>
-                            <div class="password-section col-6 offset-3 mt-2">
+                            <div class="password-section col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2">
                                 <h5>Password</h5>
                                 <div class="form-floating">
                                     <input type="password" name="password" class="form-control" id="floating-password-signin" placeholder="Password" required>
@@ -39,7 +39,7 @@
                                     <label for="floating-password-signin">Enter your password</label>
                                 </div>
                             </div>
-                            <div class="check-section col-6 offset-3 mt-2 d-flex justify-content-between">
+                            <div class="check-section col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2 d-flex justify-content-between">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">Remember me</label>
@@ -48,10 +48,10 @@
                                     <a href="forgotPassword.php" class="forgot-password-text">Forgot password?</a>
                                 </div>
                             </div>
-                            <div class="button-section offset-3 mt-2">
-                                <button type="button" class="btn btn-dark col-8">Sign In</button>
+                            <div class="button-section">
+                                <button type="button" class="btn btn-dark col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">Sign In</button>
                             </div>
-                            <div class="register-question col-6 offset-3 mt-2 text-center ">
+                            <div class="register-question col-8 offset-2 mt-2 text-center ">
                                 Don't have an account? 
                                 <a href="signup.php" class="sign-up-text">Sign Up</a>
                             </div>

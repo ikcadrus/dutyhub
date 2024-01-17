@@ -24,21 +24,21 @@
                         <div class="sign-up-form">
                             <h2>Welcome to Duty<span class="glow-hub">Hub</span></h2>
                             <h2>Sign up</h2>
-                            <div class="email-section col-6 offset-3 mt-2">
+                            <div class="email-section col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2">
                                 <h5>Email</h5>
                                 <div class="form-floating">
                                     <input type="email" name="email" class="form-control" id="floating-email" placeholder="Email" required>
                                     <label for="floating-email">user@example.com</label> 
                                 </div>
                             </div>
-                            <div class="username-section col-6 offset-3 mt-2">
+                            <div class="username-section col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2">
                                 <h5>Username</h5>
                                 <div class="form-floating">
                                     <input type="text" name="username" class="form-control" id="floating-username" placeholder="Username" required>
                                     <label for="floating-username">Enter your username</label>
                                 </div>
                             </div>
-                            <div class="password-section col-6 offset-3 mt-2">
+                            <div class="password-section col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2">
                                 <h5>Password</h5>
                                 <div class="form-floating">
                                     <input type="password" name="password" class="form-control" id="floating-password" placeholder="Password" required>
@@ -46,7 +46,7 @@
                                     <label for="floating-password">Enter your password</label>
                                 </div>
                             </div>
-                            <div class="repassword-section col-6 offset-3 mt-2">
+                            <div class="repassword-section col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2">
                                 <h5>Confirm password</h5>
                                 <div class="form-floating">
                                     <input type="password" name="repassword" class="form-control" id="floating-repassword" placeholder="Password" required>
@@ -54,10 +54,10 @@
                                     <label for="floating-repassword">Re-enter your password</label>
                                 </div>
                             </div>
-                            <div class="button-section offset-3 mt-2">
-                                <button type="button" class="btn btn-dark col-8">Create account</button>
+                            <div class="button-section">
+                                <button type="button" class="btn btn-dark col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2">Create account</button>
                             </div>
-                            <div class="login-question col-6 offset-3 mt-2 text-center">
+                            <div class="login-question col-8 offset-2 mt-2 text-center">
                                 Already have an account?
                                 <a href="signin.php" class="sign-in-text">Sign In</a>
                             </div>

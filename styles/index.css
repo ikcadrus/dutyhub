@@ -1,22 +1,3 @@
-body::-webkit-scrollbar {
-    background-color: #fff;
-    width: 16px;
-}
-
-body::-webkit-scrollbar-track {
-    background-color: #fff;
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: #babac0;
-    border-radius: 16px;
-    border: 4px solid #fff;
-}
-
-body::-webkit-scrollbar-button {
-    display:none;
-}
-
 .vertical-center {
     min-height: 92.75%;
     min-height: 92.75vh; 
@@ -41,7 +22,7 @@ body::-webkit-scrollbar-button {
 }
 
 .custom-shape-divider-top-1704668404 .shape-fill {
-    fill: #ededed;
+    fill: var(--mainColor);
 }
 
 .custom-shape-divider-bottom-1704670510 {
@@ -62,7 +43,30 @@ body::-webkit-scrollbar-button {
 }
 
 .custom-shape-divider-bottom-1704670510 .shape-fill {
-    fill: #ededed;
+    fill: var(--mainColor);
+}
+
+body::-webkit-scrollbar {
+    background-color: var(--whiteColor);
+    width: 16px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: var(--whiteColor);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #babac0;
+    border-radius: 16px;
+    border: 4px solid var(--whiteColor);
+}
+
+body::-webkit-scrollbar-button {
+    display:none;
+}
+
+body{
+    background-color: var(--backgroundColor);
 }
 
 .left-text{
@@ -76,17 +80,21 @@ body::-webkit-scrollbar-button {
 
 h1{
     font-weight: 700;
+    text-align: center;
+    color:var(--fontColor);
 }
 
 h2{
-    color: #b2bec3;
+    text-align: center;
+    position: relative;
+    color:var(--fontColor2);
 }
 
 .contact-us{
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: black;
+    color: var(--fontColor);
     font-size: 25px;
     text-align: center;
 }
@@ -97,8 +105,10 @@ h2{
 
 .contact-us:hover{
     color: #FF0000;
+    filter: drop-shadow(0 0 1px #FF0000);
     font-size: 30px;
     transition: 0.25s;
+    display: flex;
 }
 
 .right-text{
@@ -111,8 +121,9 @@ h2{
 }
 
 .navbar{
-    background-color: #ededed;
+    background-color: var(--mainColor);
 }
+
 
 .nav-link{
     text-align: center;
@@ -140,7 +151,7 @@ h2{
     font-weight: 500;
     transition: all 0.2s ease;
     border-radius: 9px; 
-    color: black;
+    color: var(--fontColor);
 }
 
 .navbar-brand a{
@@ -148,7 +159,7 @@ h2{
 }
 
 .collapse ul li a:hover{
-    background-color: #ededed;
+    background-color: var(--mainColor);
     color: #FF0000;
     filter: drop-shadow(0 0 1px #FF0000);
 }
@@ -159,7 +170,7 @@ h2{
 }
 
 .dropdown-menu{
-    background-color: #ededed;
+    background-color: var(--mainColor);
 }
 
 input[type='checkbox']:checked{
@@ -188,17 +199,18 @@ input[type='checkbox']:checked{
 }
 
 .img-flag{
-    margin-top: -1.75%;
+    margin-top: -2%;
 }
 
-@media (min-width: 768px){
+
+/* @media (min-width: 768px){
     
     .navbar-right{
         float: right !important;
         margin-right: -10px;
     }
 
-}
+} */
 
 @media (min-width: 992px){
 
@@ -217,10 +229,50 @@ input[type='checkbox']:checked{
         display: flex;
     }
 
+    .language-menu{
+        padding-top: 0px;
+        padding-bottom: 0px;
+        height: 38px;
+    }
+    
+    .sub-menu{
+        height: 38px;
+    }
+
     #footer {
         position: fixed;
         bottom: 0;
         width: 100%;
     }
 
+    .dropdown-menu{
+        margin: auto;
+    }
+
+}
+
+/* Change color mode */
+
+:root{
+
+    --backgroundColor: white;
+    --mainColor: #ededed;
+    --whiteColor: #fff;
+    --fontColor: black;
+    --fontColor2: #b2bec3;
+    --backgroundFontColor: #b2bec3;
+
+}
+
+.dark-theme{
+    --backgroundColor: #383838;
+    --mainColor: #272727;
+    --whiteColor: #000;
+    --fontColor: white;
+    --fontColor2: #b2bec3;
+    --backgroundFontColor: #b2bec3;
+}   
+
+#logo_name{
+    color: var(--fontColor);
 }

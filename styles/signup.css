@@ -70,11 +70,29 @@ h2{
     color: black;
 }
 
+@media all and (width: 768px){
+
+    .left{
+        width: 100%;
+    }
+
+    .right{
+        width: 60%;
+        margin-left: 20%;
+        margin-top: 2.5%;
+    }
+
+}
+
 @media all and (max-width: 768px){
     
-    body{
-        overflow-x: hidden;
-        overflow-y: scroll;
+    @media all and (max-height: 950px){
+
+        body{
+            overflow-x: auto;
+            overflow-y: auto;
+        }
+
     }
 
     .left{
