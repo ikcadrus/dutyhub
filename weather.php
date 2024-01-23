@@ -6,9 +6,11 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <script src="script/settings.js?v=<?php echo time(); ?>"></script>
+        
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="styles/index.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="styles/weather.css?v=<?php echo time(); ?>">
     </head>
     <body>
     <nav class="navbar border-bottom navbar-expand-lg sticky-top" id="navbarID">
@@ -100,38 +102,35 @@
                 <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
             </svg>
         </footer>
-        <div class="container-fluid vertical-center">
+        <div class="container-fluid">
             <div class="row">
-                <div class="left-text col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
-                    <h1 class="ms-xl-5 ps-xl-5">Duty<span class="glow-hub">Hub</span></h1>
-                    <h2 class="ms-xl-5 ps-xl-5">Easy-to-use application that will help you organize your daily tasks</h2>
-                </div>
-                <div class="main-logo col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-0">
-                    <img src="img/logo/logo-light.svg" class="col-12 main-logo" id="logo_center">    
-                </div>
-                <div class="right-text col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
-                    <div class="row me-xl-5 pe-xl-5">
-                    <h1 class="">Contact Us</h1>
-                    </div>
-                    <div class="row me-xl-5 pe-xl-5">
-                    <h2 class="">We are available on the following social media</h2>
-                    </div>
-                    <div class="row contact-size me-xl-5 pe-xl-5">
-                    <a class="contact-us offset-1 col-1" href="https://www.facebook.com">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-                    <a class="contact-us offset-1 col-1" href="https://www.twitter.com">
-                        <i class="bi bi-twitter-x"></i>
-                    </a>
-                    <a class="contact-us offset-1 col-1" href="https://www.instagram.com">
-                        <i class="bi bi-instagram"></i>
-                    </a>
-                    <a class="contact-us col-1 offset-1" href="https://www.github.com">
-                        <i class="bi bi-github"></i>
-                    </a>
+                <div class="calendar-place col-lg-6 col-xl-6">
+                    <div class="calendar col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 pb-2">
+                        <div class="calendar-head col-12 mt-5 mb-2">
+                            <div class="month">
+                                <button class="btn border-2 prev mt-1 me-1"><i class="bi bi-chevron-left" id="prev-date"></i></button>
+                                <div class="date">     
+                                </div>
+                                <button class="btn border-2 next mt-1 ms-1"><i class="bi bi-chevron-right" id="next-date"></i></button>
+                            </div>
+                        </div>
+                        <div class="calendar-body">
+                            <div class="week">
+                                <div>Mon</div>
+                                <div>Tue</div>
+                                <div>Wed</div>
+                                <div>Thu</div>
+                                <div>Fri</div>
+                                <div>Sat</div>
+                                <div>Sun</div>
+                            </div>
+                            <div class="days">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="script/weather.js"></script>
     </body>
 </html>

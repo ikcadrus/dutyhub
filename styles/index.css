@@ -1,9 +1,35 @@
+/* Change color mode */
+
+:root{
+
+    --backgroundColor: white;
+    --mainColor: #ededed;
+    --whiteColor: #fff;
+    --fontColor: black;
+    --fontColor2: #b2bec3;
+    --backgroundFontColor: #b2bec3;
+
+}
+
+.dark-theme{
+    --backgroundColor: #383838;
+    --mainColor: #272727;
+    --whiteColor: #000;
+    --fontColor: white;
+    --fontColor2: #b2bec3;
+    --backgroundFontColor: #b2bec3;
+}  
+
+/* All on center side */
+
 .vertical-center {
     min-height: 92.75%;
     min-height: 92.75vh; 
     display: flex;
     align-items: center;
 }
+
+/* Waves */
 
 .custom-shape-divider-top-1704668404 {
     position: absolute;
@@ -46,6 +72,8 @@
     fill: var(--mainColor);
 }
 
+/* Scrollbar */
+
 body::-webkit-scrollbar {
     background-color: var(--whiteColor);
     width: 16px;
@@ -65,9 +93,13 @@ body::-webkit-scrollbar-button {
     display:none;
 }
 
+/* Website style (dark/light mode) */
+
 body{
     background-color: var(--backgroundColor);
 }
+
+/* Left side */
 
 .left-text{
     display: flex;
@@ -77,6 +109,8 @@ body{
     position: relative;
     justify-content: center;
 }
+
+/* Headers */
 
 h1{
     font-weight: 700;
@@ -89,6 +123,8 @@ h2{
     position: relative;
     color:var(--fontColor2);
 }
+
+/* Right side */
 
 .contact-us{
     display: flex;
@@ -120,10 +156,11 @@ h2{
     justify-content: center;
 }
 
+/* Navbar START */
+
 .navbar{
     background-color: var(--mainColor);
 }
-
 
 .nav-link{
     text-align: center;
@@ -142,10 +179,6 @@ h2{
 .collapse ul li i{
     font-weight: bold;
 }
-
-/* .collapse ul li i:hover{
-    filter: drop-shadow(0 0 20px #FF0000);
-} */
 
 .collapse ul li a{
     font-weight: 500;
@@ -202,15 +235,11 @@ input[type='checkbox']:checked{
     margin-top: -2%;
 }
 
+#logo_name{
+    color: var(--fontColor);
+}
 
-/* @media (min-width: 768px){
-    
-    .navbar-right{
-        float: right !important;
-        margin-right: -10px;
-    }
-
-} */
+/* Navbar END */
 
 @media (min-width: 992px){
 
@@ -249,30 +278,4 @@ input[type='checkbox']:checked{
         margin: auto;
     }
 
-}
-
-/* Change color mode */
-
-:root{
-
-    --backgroundColor: white;
-    --mainColor: #ededed;
-    --whiteColor: #fff;
-    --fontColor: black;
-    --fontColor2: #b2bec3;
-    --backgroundFontColor: #b2bec3;
-
-}
-
-.dark-theme{
-    --backgroundColor: #383838;
-    --mainColor: #272727;
-    --whiteColor: #000;
-    --fontColor: white;
-    --fontColor2: #b2bec3;
-    --backgroundFontColor: #b2bec3;
-}   
-
-#logo_name{
-    color: var(--fontColor);
-}
+} 

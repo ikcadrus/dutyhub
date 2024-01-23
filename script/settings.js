@@ -69,7 +69,6 @@ function changeColorMode(){
         logo.src = "img/logo/logo-dark.svg";
         logoCenter.src = "img/logo/logo-dark.svg";
         navbarID.classList.add('border-dark');
-
     }else{
         logo.src = "img/logo/logo-light.svg";
         logoCenter.src = "img/logo/logo-light.svg";
