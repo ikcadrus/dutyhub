@@ -83,3 +83,85 @@ function nextMonth(){
 
 prev.addEventListener("click", prevMonth);
 next.addEventListener("click", nextMonth);
+
+function whenInputFocus(){
+
+    var input = document.getElementById('floating-weather')
+    var button = document.getElementById('button-section');
+    button.style.border = '1px solid #ff0000';
+    button.style.boxShadow = 'inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6)';
+
+}
+
+function whenInputNotFocus(){
+
+    var input = document.getElementById('floating-weather')
+    var button = document.getElementById('button-section');
+    button.style.border = '1px solid #dee2e6';
+    button.style.boxShadow = 'none';
+
+}
+
+const apiKey = "e285d7fab5ac96f98a47f755842f9582";
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+const searchBox = document.querySelector(".search-bar input");
+const searchButton = document.querySelector(".search-bar button");
+const weatherIcon = document.querySelector(".weather-icon");
+
+async function checkWeather(city){
+
+    const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+
+    if(response.status == 404){
+        document.querySelector(".error").style.display = "flex";
+        document.querySelector(".weather-section").style.display = "none";
+        document.querySelector(".information").style.display = "none";
+    }else{
+
+        var data = await response.json();
+
+        console.log(data);
+
+        document.querySelector(".city").innerHTML = data.name;
+        document.querySelector(".temperature").innerHTML = Math.round(data.main.temp) + '°C';
+        document.querySelector(".humidity").innerHTML = data.main.humidity + '%';
+        document.querySelector(".wind").innerHTML = Math.round(data.wind.speed) + ' km/h';
+
+        if(data.weather[0].main == 'Clouds'){
+            weatherIcon.src = "img/weather/cloudy-icon.svg";
+        }
+        else if(data.weather[0].main == 'Clear'){
+            weatherIcon.src = "img/weather/sunny-icon.svg";
+        }
+        else if(data.weather[0].main == 'Rain'){
+            weatherIcon.src = "img/weather/rain-icon.svg";
+        }
+        else if(data.weather[0].main == 'Drizzle'){
+            weatherIcon.src = "img/weather/drizzle-icon.svg";
+        }
+        else if(data.weather[0].main == 'Mist'){
+            weatherIcon.src = "img/weather/mist-icon.svg";
+        }
+        else if(data.weather[0].main == 'Snow'){
+            weatherIcon.src = "img/weather/snow-icon.svg";
+        }
+        else if(data.weather[0].main == 'Thunderstorm'){
+            weatherIcon.src = "img/weather/thunder-icon.svg";
+        }
+
+        document.querySelector(".weather-section").style.display = "block";
+        document.querySelector(".information").style.display = "none";
+        document.querySelector(".error").style.display = "none";
+
+    }
+
+    
+}
+
+searchButton.addEventListener("click", ()=>{
+    
+    checkWeather(searchBox.value);
+
+})
+

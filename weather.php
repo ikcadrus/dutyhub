@@ -102,11 +102,11 @@
                 <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
             </svg>
         </footer>
-        <div class="container-fluid">
+        <div class="container-fluid mt-lg-4 pt-lg-4 mt-xl-4 pt-xl-4 mb-5">
             <div class="row">
-                <div class="calendar-place col-lg-6 col-xl-6">
+                <div class="calendar-place col-lg-6 col-xl-6 mt-lg-5 pt-lg-5 mt-xl-5 pt-xl-5">
                     <div class="calendar col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 pb-2">
-                        <div class="calendar-head col-12 mt-5 mb-2">
+                        <div class="calendar-head col-12 mt-5 mb-1">
                             <div class="month">
                                 <button class="btn border-2 prev mt-1 me-1"><i class="bi bi-chevron-left" id="prev-date"></i></button>
                                 <div class="date">     
@@ -129,8 +129,54 @@
                         </div>
                     </div>
                 </div>
+                <div class="weather-place col-lg-6 col-xl-6 mt-5 mt-lg-5 pt-lg-5 mt-xl-5 pt-xl-5">
+                    <div class="weather col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 mt-lg-5 mt-xl-5">
+                        <div class="weather-search col-12 pt-2">
+                            <div class="row">
+                                <div class="search-bar d-flex">
+                                    <div class="input form-floating col-7 offset-2">
+                                        <input type="text" name="taskHolder" class="form-control" id="floating-weather" placeholder="text" onfocus="whenInputFocus()" onfocusout="whenInputNotFocus()">
+                                        <label for="floating-weather" class="floating-weather">Insert your city</label>
+                                    </div>
+                                    <div class="button col-1">
+                                        <button class="btn btn-light" id="button-section"><i class="bi bi-search"></i></button>
+                                    </div>
+                                </div>
+                                <div class="information">
+                                    <h4>You must first search for the place</h4>
+                                </div>
+                                <div class="error">
+                                    <h4>Invalid city name</h4>
+                                </div>
+                                <div class="weather-section col-12">
+                                    <div class="icon d-flex justify-content-center">
+                                        <img src="img/weather/sunny-icon.svg" class="weather-icon">
+                                    </div>
+                                    <h2 class="city">City</h2>
+                                    <h3 class="temperature">0°C</h3>
+                                    <div class="more-information col-12 d-flex">
+                                        <div class="left-side col-5">
+                                            <img src="img/weather/humidity.svg" class="humidity-icon" width="50px" height="50px">
+                                            <div class="d-flex justify-content-center">
+                                                <h5>Humidity:&nbsp;</h5>
+                                                <h5 class="humidity">0%</h5>
+                                            </div>
+                                        </div>
+                                        <div class="right-side col-5 offset-2">
+                                            <img src="img/weather/wind-icon.svg" width="50px" height="50px">
+                                            <div class="d-flex justify-content-center">
+                                                <h5>Wind:&nbsp;</h5>
+                                                <h5 class="wind">0 km/h</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <script src="script/weather.js"></script>
+        <script src="script/weather.js?v=<?php echo time(); ?>"></script>
     </body>
 </html>
