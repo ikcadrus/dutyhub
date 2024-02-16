@@ -1,115 +1,11 @@
-.calendar-place{
-    position: relative;
+#footer{
+    position: fixed;
 }
 
-.calendar{
-    background-color: rgba(56, 56, 56, 0.25);
-    border-radius: 24px;
-    min-height: 387.685px;
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
-
-.month{
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-    font-weight: 600;
-}
-
-.week{  
-    display: grid;
-    text-align: center;
-    justify-items: center;
-    grid-template-columns: repeat(7, 1fr);
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.week div{
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.days{
-    display: grid;
-    text-align: center;
-    justify-items: center;
-    grid-template-columns: repeat(7, 1fr);
-    row-gap: 7.5px;
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.day{
-    color: black;
-}
-
-div.day{
-    height: 10px;
-}
-
-.day:hover{
-    font-size: 25px;
-}
-
-.prev-date{
-    color: #9e9e9e;
-}
-
-.prev-date:hover{
-    color: black;
-}
-
-.next-date{
-    color: #9e9e9e;
-}
-
-.next-date:hover{
-    color: black;
-}
-
-.today{
-    font-size: 30px;
-    border: solid rgba(255, 0, 0, 0.75) 2px;
-    border-radius: 24px;
-    background-color: rgba(70, 70, 70, 0.25);
-    color: rgba(255, 0, 0, 0.75);
-}
-
-.days div{
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.days div:hover{
-    background-color: rgba(70, 70, 70, 0.25);
-    border-radius: 24px;
-}
-
-.today:hover{
-    background-color: rgba(70, 70, 70, 0) !important;
-    font-size: 30px;
-}
-
-.prev:hover{
-    color: rgba(255, 0, 0, 0.75);
-    border-color: rgba(70, 70, 70, 0.25);
-}
-
-.next:hover{
-    color: rgba(255, 0, 0, 0.75);
-    border-color: rgba(70, 70, 70, 0.25);
-}
-
 
 /* Weather */
 
@@ -120,7 +16,7 @@ div.day{
 .weather{
     background-color: rgba(56, 56, 56, 0.25);
     border-radius: 24px;
-    min-height: 387.685px;
+    height: 662.5px;
 }
 
 .weather-section{
@@ -143,6 +39,35 @@ div.day{
     align-items: center;
 }
 
+.city-place{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.date{
+    font-size: 20px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.bi-geo-alt-fill{
+    font-size: 20px;
+    color: #545454;
+    margin-top: 2.5px;
+}
+
+.temperature{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 75px;
+    width: 154px;
+}
+
 #floating-weather{
     border-radius: 24px 0 0 24px;
     border-right: none;
@@ -155,12 +80,9 @@ div.day{
 
 .btn-light{
     border-radius: 0 24px 24px 0;
-    width: 36.26px;
     height: 58px;
     border: #dee2e6 solid 1px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0;
 }
 
 .weather-icon{
@@ -201,4 +123,131 @@ h3{
     align-items: center;
     font-size: 25px;
     padding-left: 0;
+}
+
+.hourly{
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.hourly-weather-section{
+    background-color: rgba(176, 176, 176, 0.75);
+    border-radius: 12px;
+    width: 75px;
+    margin-left: 13px;
+}
+
+p{
+    margin: 0;
+}
+
+.hourly-time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.time{
+    font-weight: 400;
+}
+
+.hourly-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hourly-weather-icon{
+    width: 50px;
+    height: 50px;
+}
+
+.hourly-temperature{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
+}
+
+.daily{
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.daily-weather-section{
+    background-color: rgba(176, 176, 176, 0.75);
+    border-radius: 12px;
+    width: 75px;
+    margin-left: 13px;
+}
+
+.daily-time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.time{
+    font-weight: 400;
+}
+
+.daily-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.daily-weather-icon{
+    width: 50px;
+    height: 50px;
+}
+
+.daily-temperature{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
+}
+
+.daily-temperature-day{
+    padding-right: 1px;
+}
+
+.daily-temperature-night{
+    padding-left: 1px;
+    color: #70757a;
+}
+
+.hourly, .daily {
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.daily-weather-section {
+    display: inline-block;
+    vertical-align: top;
+
+}
+
+@media all and (max-width: 892.5px){
+
+    .hourly{
+        display: flex;
+        justify-content: start!important;
+        margin-left: 12px;
+    }
+
+}
+
+@media all and (max-width: 490px){
+
+    .daily{
+        display: flex;
+        justify-content: start!important;
+        margin-left: 12px;
+    }
+
 }

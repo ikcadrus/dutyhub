@@ -30,6 +30,18 @@
                                 Duties
                             </a>
                         </li>
+                        <li class="nav-item me-lg-2 me-xl-2">
+                            <a class="nav-link" aria-current="page" href="calendar.php">
+                                <i class="bi bi-calendar-week"></i>
+                                Calendar
+                            </a>
+                        </li>
+                        <li class="nav-item me-lg-2 me-xl-2">
+                            <a class="nav-link" aria-current="page" href="weather.php">
+                                <i class="bi bi-cloud-drizzle"></i>
+                                Weather
+                            </a>
+                        </li>
                         <li class="nav-item dropdown me-lg-2 me-xl-2">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-gear"></i>
@@ -102,44 +114,20 @@
                 <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
             </svg>
         </footer>
-        <div class="container-fluid mt-lg-4 pt-lg-4 mt-xl-4 pt-xl-4 mb-5">
+        <div class="container-fluid mt-5 pt-4 mb-5">
             <div class="row">
-                <div class="calendar-place col-lg-6 col-xl-6 mt-lg-5 pt-lg-5 mt-xl-5 pt-xl-5">
-                    <div class="calendar col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 pb-2">
-                        <div class="calendar-head col-12 mt-5 mb-1">
-                            <div class="month">
-                                <button class="btn border-2 prev mt-1 me-1"><i class="bi bi-chevron-left" id="prev-date"></i></button>
-                                <div class="date">     
-                                </div>
-                                <button class="btn border-2 next mt-1 ms-1"><i class="bi bi-chevron-right" id="next-date"></i></button>
-                            </div>
-                        </div>
-                        <div class="calendar-body">
-                            <div class="week">
-                                <div>Mon</div>
-                                <div>Tue</div>
-                                <div>Wed</div>
-                                <div>Thu</div>
-                                <div>Fri</div>
-                                <div>Sat</div>
-                                <div>Sun</div>
-                            </div>
-                            <div class="days">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="weather-place col-lg-6 col-xl-6 mt-5 mt-lg-5 pt-lg-5 mt-xl-5 pt-xl-5">
-                    <div class="weather col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 mt-lg-5 mt-xl-5">
+                <div class="weather-place">
+                    <div class="weather col-12 col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
                         <div class="weather-search col-12 pt-2">
                             <div class="row">
+                                <h1>Weather API</h1>
                                 <div class="search-bar d-flex">
                                     <div class="input form-floating col-7 offset-2">
                                         <input type="text" name="taskHolder" class="form-control" id="floating-weather" placeholder="text" onfocus="whenInputFocus()" onfocusout="whenInputNotFocus()">
                                         <label for="floating-weather" class="floating-weather">Insert your city</label>
                                     </div>
                                     <div class="button col-1">
-                                        <button class="btn btn-light" id="button-section"><i class="bi bi-search"></i></button>
+                                        <button class="btn btn-light col-12" id="button-section"><i class="bi bi-search"></i></button>
                                     </div>
                                 </div>
                                 <div class="information">
@@ -149,27 +137,47 @@
                                     <h4>Invalid city name</h4>
                                 </div>
                                 <div class="weather-section col-12">
+                                    <div class="city-place">
+                                        <i class="bi bi-geo-alt-fill"></i>
+                                        &nbsp;
+                                        <h2 class="city mt-2">City</h2>
+                                    </div>
+                                    <div class= "date">
+                                    </div>
                                     <div class="icon d-flex justify-content-center">
                                         <img src="img/weather/sunny-icon.svg" class="weather-icon">
+                                        <h1 class="temperature"></h1>
                                     </div>
-                                    <h2 class="city">City</h2>
-                                    <h3 class="temperature">0°C</h3>
-                                    <div class="more-information col-12 d-flex">
-                                        <div class="left-side col-5">
-                                            <img src="img/weather/humidity.svg" class="humidity-icon" width="50px" height="50px">
-                                            <div class="d-flex justify-content-center">
-                                                <h5>Humidity:&nbsp;</h5>
-                                                <h5 class="humidity">0%</h5>
+                                    <hr><div class="hourly d-flex justify-content-center ">
+                                        <!-- <div class="hourly-weather-section col-1">
+                                            <div class="hourly-time">
+                                                <h6 class="time">22:00</h6>
                                             </div>
-                                        </div>
-                                        <div class="right-side col-5 offset-2">
-                                            <img src="img/weather/wind-icon.svg" width="50px" height="50px">
-                                            <div class="d-flex justify-content-center">
-                                                <h5>Wind:&nbsp;</h5>
-                                                <h5 class="wind">0 km/h</h5>
+                                            <div class="hourly-icon">
+                                                <img src="img/weather/sunny-icon.svg" class="hourly-weather-icon">
                                             </div>
-                                        </div>
+                                            <div class="hourly-temperature">
+                                                <p class="hourly-temperature">19°</p>
+                                            </div>
+                                        </div> -->
                                     </div>
+                                    <hr>
+                                    <div class="daily d-flex justify-content-center ">
+                                        <!-- <div class="daily-weather-section col-1">
+                                            <div class="daily-time">
+                                                <h6 class="time">Mon</h6>
+                                            </div>
+                                            <div class="daily-icon">
+                                                <img src="img/weather/moon-cloudy-icon.svg" class="daily-weather-icon">
+                                            </div>
+                                            <div class="daily-temperature">
+                                                <p class="daily-temperature-day">19°</p>
+                                                <p class="daily-temperature-night">12°</p>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    
+                                    <hr>
                                 </div>
                             </div>
                         </div>

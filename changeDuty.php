@@ -29,6 +29,18 @@
                                 Duties
                             </a>
                         </li>
+                        <li class="nav-item me-lg-2 me-xl-2">
+                            <a class="nav-link" aria-current="page" href="calendar.php">
+                                <i class="bi bi-calendar-week"></i>
+                                Calendar
+                            </a>
+                        </li>
+                        <li class="nav-item me-lg-2 me-xl-2">
+                            <a class="nav-link" aria-current="page" href="weather.php">
+                                <i class="bi bi-cloud-drizzle"></i>
+                                Weather
+                            </a>
+                        </li>
                         <li class="nav-item dropdown me-lg-2 me-xl-2">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-gear"></i>
@@ -67,7 +79,7 @@
                                         </div>
                                         <div class="col-lg-2 text-end">
                                             <div class="form-check form-switch mt-1">
-                                                <input class="dark-mode-type form-check-input" type="checkbox" id="flexSwitchCheckDefault" onclick="changeColorMode2()">
+                                                <input class="dark-mode-type form-check-input" type="checkbox" id="flexSwitchCheckDefault" onclick="changeColorMode()">
                                                 <label class="form-check-label" for="flexSwitchCheckDefault"></label>
                                             </div>
                                         </div>

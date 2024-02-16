@@ -1,89 +1,3 @@
-const calendar = document.querySelector(".calendar"),
-date = document.querySelector(".date"),
-daysContainer = document.querySelector(".days"),
-prev = document.querySelector(".prev"),
-next = document.querySelector(".next");
-
-let thisDay;
-let today = new Date();
-let month = today.getMonth();
-let year = today.getFullYear();
-
-const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-];
-
-function basicCalendar(){
-
-    const firstDay = new Date(year, month, 0);
-    const lastDay = new Date(year, month+1, 0);
-    const prevLastDay = new Date(year, month, 0);
-    const prevDays = prevLastDay.getDate();
-    const lastDate = lastDay.getDate();
-    const day = firstDay.getDay();
-    const nextDays = 7 - lastDay.getDay();
-
-    date.innerHTML = months[month] + " " + year;
-
-    let days = "";
-
-    for(let x = day; x > 0; x--){
-        days += `<div class="day prev-date ">${prevDays - x + 1}</div>`;
-    }
-
-    for(let y = 1; y <= lastDate; y++){
-
-        if(y === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear()){
-            days += `<div class="day today ">${y}</div>`;
-        }else{
-            days += `<div class="day ">${y}</div>`;
-        }
-
-    }
-
-    for(let z = 1; z <= nextDays; z++){
-
-        days += `<div class="day next-date ">${z}</div>`;
-
-    }
-
-    daysContainer.innerHTML = days;
-}
-
-basicCalendar();
-
-function prevMonth(){
-    month--;
-    if(month < 0){
-        month = 11;
-        year--;
-    }
-    basicCalendar();
-}
-
-function nextMonth(){
-    month++;
-    if(month > 11){
-        month = 0;
-        year++;
-    }
-    basicCalendar();
-}
-
-prev.addEventListener("click", prevMonth);
-next.addEventListener("click", nextMonth);
-
 function whenInputFocus(){
 
     var input = document.getElementById('floating-weather')
@@ -109,9 +23,27 @@ const searchBox = document.querySelector(".search-bar input");
 const searchButton = document.querySelector(".search-bar button");
 const weatherIcon = document.querySelector(".weather-icon");
 
+
+async function getCityTime(cityName){
+    try{
+        const response = await fetch(`${apiUrl}${cityName}&appid=${apiKey}`);
+        if(!response.ok){
+            throw new Error('error');
+        }
+        const data = await response.json();
+        const timezoneOffset = data.timezone;
+        const currentUtcTime = new Date();
+        const cityTime = new Date(currentUtcTime.getTime() + timezoneOffset * 1000);
+        return cityTime;
+    } catch (error) {
+        console.error('error2');
+    }
+}
+
 async function checkWeather(city){
 
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+    const currentHour = new Date().getHours();
 
     if(response.status == 404){
         document.querySelector(".error").style.display = "flex";
@@ -120,43 +52,74 @@ async function checkWeather(city){
     }else{
 
         var data = await response.json();
-
         console.log(data);
-
         document.querySelector(".city").innerHTML = data.name;
         document.querySelector(".temperature").innerHTML = Math.round(data.main.temp) + '°C';
-        document.querySelector(".humidity").innerHTML = data.main.humidity + '%';
-        document.querySelector(".wind").innerHTML = Math.round(data.wind.speed) + ' km/h';
 
-        if(data.weather[0].main == 'Clouds'){
-            weatherIcon.src = "img/weather/cloudy-icon.svg";
-        }
-        else if(data.weather[0].main == 'Clear'){
-            weatherIcon.src = "img/weather/sunny-icon.svg";
-        }
-        else if(data.weather[0].main == 'Rain'){
-            weatherIcon.src = "img/weather/rain-icon.svg";
-        }
-        else if(data.weather[0].main == 'Drizzle'){
-            weatherIcon.src = "img/weather/drizzle-icon.svg";
-        }
-        else if(data.weather[0].main == 'Mist'){
-            weatherIcon.src = "img/weather/mist-icon.svg";
-        }
-        else if(data.weather[0].main == 'Snow'){
-            weatherIcon.src = "img/weather/snow-icon.svg";
-        }
-        else if(data.weather[0].main == 'Thunderstorm'){
-            weatherIcon.src = "img/weather/thunder-icon.svg";
+        const timezoneOffset = data.timezone;
+        const currentHourInCity = new Date((new Date().getTime() + timezoneOffset * 1000)).getHours(); 
+
+        if(data.weather[0].main == 'Clouds') {
+            if (data.clouds.all > 80) {
+                weatherIcon.src = "img/weather/dark-cloudy-icon.svg";
+            } else if (data.clouds.all > 24) {
+                weatherIcon.src = "img/weather/full-cloudy-icon.svg";
+            } else {
+                if (currentHourInCity >= 6 && currentHourInCity < 18) {
+                    weatherIcon.src = "img/weather/cloudy-icon.svg";
+                } else {
+                    weatherIcon.src = "img/weather/moon-cloudy-icon.svg";
+                }
+            }
+        }else if(currentHourInCity >= 6 && currentHourInCity < 18){
+
+            if(data.weather[0].main == 'Clear'){
+                weatherIcon.src = "img/weather/sunny-icon.svg";
+            }
+            else if(data.weather[0].main == 'Rain'){
+                weatherIcon.src = "img/weather/rain-icon.svg";
+            }
+            else if(data.weather[0].main == 'Drizzle'){
+                weatherIcon.src = "img/weather/drizzle-icon.svg";
+            }
+            else if(data.weather[0].main == 'Mist'){
+                weatherIcon.src = "img/weather/mist-icon.svg";
+            }
+            else if(data.weather[0].main == 'Snow'){
+                weatherIcon.src = "img/weather/snow-icon.svg";
+            }
+            else if(data.weather[0].main == 'Thunderstorm'){
+                weatherIcon.src = "img/weather/thunder-icon.svg";
+            }
+
+            }else{
+            
+            if(data.weather[0].main == 'Clear'){
+                weatherIcon.src = "img/weather/moon-icon.svg";
+            }
+            else if(data.weather[0].main == 'Rain'){
+                weatherIcon.src = "img/weather/rain-icon.svg";
+            }
+            else if(data.weather[0].main == 'Drizzle'){
+                weatherIcon.src = "img/weather/moon-drizzle-icon.svg";
+            }
+            else if(data.weather[0].main == 'Mist'){
+                weatherIcon.src = "img/weather/mist-icon.svg";
+            }
+            else if(data.weather[0].main == 'Snow'){
+                weatherIcon.src = "img/weather/snow-icon.svg";
+            }
+            else if(data.weather[0].main == 'Thunderstorm'){
+                weatherIcon.src = "img/weather/thunder-icon.svg";
+            }
+
         }
 
         document.querySelector(".weather-section").style.display = "block";
         document.querySelector(".information").style.display = "none";
         document.querySelector(".error").style.display = "none";
 
-    }
-
-    
+    }   
 }
 
 searchButton.addEventListener("click", ()=>{
@@ -165,3 +128,260 @@ searchButton.addEventListener("click", ()=>{
 
 })
 
+async function showDate(cityName){
+
+    const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+    try {
+        const cityHour = await getCityTime(cityName);
+        const currentCityTime = await getCityTime(cityName);
+
+        const timezoneOffset = currentCityTime.getTimezoneOffset();
+        currentCityTime.setMinutes((currentCityTime.getMinutes()) + timezoneOffset);
+        const dayOfWeek = days[currentCityTime.getDay()];
+        const dayOfMonth = currentCityTime.getDate();
+        const monthOfYear = months[currentCityTime.getMonth()];
+        const year = currentCityTime.getFullYear();
+        const currentHour = currentCityTime.getHours();
+        const currentMinutes = currentCityTime.getMinutes().toString().padStart(2, '0');
+
+        return `${dayOfWeek}, ${dayOfMonth} ${monthOfYear} ${year} ${currentHour}:${currentMinutes}`;
+    } catch (error) {
+        console.error('Error while fetching city time:', error);
+        return '';
+    }
+}
+
+searchButton.addEventListener("click", async () => {
+    const cityName = searchBox.value.trim();
+    const dateElement = document.querySelector(".date");
+    dateElement.textContent = await showDate(cityName);
+});
+
+
+async function getHourlyWeather(city, apiKey) {
+
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const timezoneOffset = data.city.timezone; 
+        const hourlyWeather = data.list.slice(0, 8);
+        checkHourlyWeather(hourlyWeather, timezoneOffset); 
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
+function checkHourlyWeather(hourlyWeather, timezoneOffset){
+
+    const hourlyWeatherContainer = document.querySelector(".hourly");
+    hourlyWeatherContainer.innerHTML = '';
+
+    hourlyWeather.forEach(hour => {
+        
+        const hourElement = document.createElement('div');
+        hourElement.classList.add('hourly-weather-section', 'col-1');
+
+        const unixTimestamp = hour.dt + timezoneOffset;
+        const hourOfDay = new Date(unixTimestamp * 1000).getHours();
+
+        const timeElement = document.createElement('div');
+        timeElement.classList.add('hourly-time');
+        timeElement.innerHTML = `<h6 class="time">${hourOfDay + ':00'}</h6>`;
+        hourElement.appendChild(timeElement);
+
+        const iconElement = document.createElement('div');
+        iconElement.classList.add('hourly-icon');
+
+        
+        if(hour.weather[0].main == 'Clouds') {
+            if (hour.clouds.all > 80) {
+                iconElement.innerHTML = `<img src="img/weather/dark-cloudy-icon.svg" class="hourly-weather-icon">`;
+            } else if (hour.clouds.all > 24) {
+                iconElement.innerHTML = `<img src="img/weather/full-cloudy-icon.svg" class="hourly-weather-icon">`;
+            } else {
+                if (hourOfDay >= 6 && hourOfDay < 18) {
+                    iconElement.innerHTML = `<img src="img/weather/cloudy-icon.svg" class="hourly-weather-icon">`;
+                } else {
+                    iconElement.innerHTML = `<img src="img/weather/moon-cloudy-icon.svg" class="hourly-weather-icon">`;
+                }
+            }
+        }else if(hourOfDay >= 6 && hourOfDay < 18){
+
+            if(hour.weather[0].main == 'Clear'){
+                iconElement.innerHTML = `<img src="img/weather/sunny-icon.svg" class="hourly-weather-icon">`;
+            }
+            else if(hour.weather[0].main == 'Rain'){
+                iconElement.innerHTML = `<img src="img/weather/rain-icon.svg" class="hourly-weather-icon">`;
+            }
+            else if(hour.weather[0].main == 'Drizzle'){
+                iconElement.innerHTML = `<img src="img/weather/drizzle-icon.svg" class="hourly-weather-icon">`;
+            }
+            else if(hour.weather[0].main == 'Mist'){
+                iconElement.innerHTML = `<img src="img/weather/mist-icon.svg" class="hourly-weather-icon">`;
+            }
+            else if(hour.weather[0].main == 'Snow'){
+                iconElement.innerHTML = `<img src="img/weather/snow-icon.svg" class="hourly-weather-icon">`;
+            }
+            else if(hour.weather[0].main == 'Thunderstorm'){
+                iconElement.innerHTML = `<img src="img/weather/thunder-icon.svg" class="hourly-weather-icon">`;
+            }
+
+            }else{
+            
+            if(hour.weather[0].main == 'Clear'){
+                iconElement.innerHTML = `<img src="img/weather/moon-icon.svg" class="hourly-weather-icon">`;
+            }
+            else if(hour.weather[0].main == 'Rain'){
+                iconElement.innerHTML = `<img src="img/weather/rain-icon.svg" class="hourly-weather-icon">`;
+            }
+            else if(hour.weather[0].main == 'Drizzle'){
+                iconElement.innerHTML = `<img src="img/weather/moon-drizzle-icon.svg" class="hourly-weather-icon">`;
+            }
+            else if(hour.weather[0].main == 'Mist'){
+                iconElement.innerHTML = `<img src="img/weather/mist-icon.svg" class="hourly-weather-icon">`;
+            }
+            else if(hour.weather[0].main == 'Snow'){
+                iconElement.innerHTML = `<img src="img/weather/snow-icon.svg" class="hourly-weather-icon">`;
+            }
+            else if(hour.weather[0].main == 'Thunderstorm'){
+                iconElement.innerHTML = `<img src="img/weather/thunder-icon.svg" class="hourly-weather-icon">`;
+            }
+
+        }
+        
+        hourElement.appendChild(iconElement);
+
+        const temperatureElement = document.createElement('div');   
+        temperatureElement.classList.add('hourly-temperature');
+        temperatureElement.innerHTML = `<p class="hourly-temperature">${Math.round(hour.main.temp)}°</p>`;
+        hourElement.appendChild(temperatureElement);
+
+        hourlyWeatherContainer.appendChild(hourElement);
+    });
+
+}
+
+async function getDailyWeather(city, apiKey){
+
+    const url = `https://api.openweathermap.org/data/2.5/forecast/?q=${city}&appid=${apiKey}&units=metric`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const timezoneOffset = data.city.timezone; 
+        const dailyWeather = data.list.filter((item, index) => index % 8 === 0);
+        checkDailyWeather(dailyWeather, timezoneOffset); 
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+
+}
+
+async function checkDailyWeather(dailyWeather, timezoneOffset){
+
+    const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    const dailyWeatherContainer = document.querySelector(".daily");
+    dailyWeatherContainer.innerHTML = '';
+
+    dailyWeather.forEach(day => {
+
+        const dayElement = document.createElement('div');
+        dayElement.classList.add('daily-weather-section', 'col-1');
+
+        const unixTimestamp = day.dt + timezoneOffset;
+        const dateOfDay = new Date(unixTimestamp * 1000);
+        const hourOfDay = new Date(unixTimestamp * 1000).getHours();
+        const dayOfWeek = days[dateOfDay.getDay()];
+
+        const timeElement = document.createElement('div');
+        timeElement.classList.add('daily-time');
+        timeElement.innerHTML = `<h6 class="time">${dayOfWeek}</h6>`
+        dayElement.appendChild(timeElement);
+
+        const iconElement = document.createElement('div');
+        iconElement.classList.add('daily-icon');
+
+        if(day.weather[0].main == 'Clouds') {
+            if (day.clouds.all > 80) {
+                iconElement.innerHTML = `<img src="img/weather/dark-cloudy-icon.svg" class="daily-weather-icon">`;
+            } else if (day.clouds.all > 24) {
+                iconElement.innerHTML = `<img src="img/weather/full-cloudy-icon.svg" class="daily-weather-icon">`;
+            } else {
+                if (hourOfDay >= 6 && hourOfDay < 18) {
+                    iconElement.innerHTML = `<img src="img/weather/cloudy-icon.svg" class="daily-weather-icon">`;
+                } else {
+                    iconElement.innerHTML = `<img src="img/weather/moon-cloudy-icon.svg" class="daily-weather-icon">`;
+                }
+            }
+        }else if(hourOfDay >= 6 && hourOfDay < 18){
+
+            if(day.weather[0].main == 'Clear'){
+                iconElement.innerHTML = `<img src="img/weather/sunny-icon.svg" class="daily-weather-icon">`;
+            }
+            else if(day.weather[0].main == 'Rain'){
+                iconElement.innerHTML = `<img src="img/weather/rain-icon.svg" class="daily-weather-icon">`;
+            }
+            else if(day.weather[0].main == 'Drizzle'){
+                iconElement.innerHTML = `<img src="img/weather/drizzle-icon.svg" class="daily-weather-icon">`;
+            }
+            else if(day.weather[0].main == 'Mist'){
+                iconElement.innerHTML = `<img src="img/weather/mist-icon.svg" class="daily-weather-icon">`;
+            }
+            else if(day.weather[0].main == 'Snow'){
+                iconElement.innerHTML = `<img src="img/weather/snow-icon.svg" class="daily-weather-icon">`;
+            }
+            else if(day.weather[0].main == 'Thunderstorm'){
+                iconElement.innerHTML = `<img src="img/weather/thunder-icon.svg" class="daily-weather-icon">`;
+            }
+
+            }else{
+            
+            if(day.weather[0].main == 'Clear'){
+                iconElement.innerHTML = `<img src="img/weather/moon-icon.svg" class="daily-weather-icon">`;
+            }
+            else if(day.weather[0].main == 'Rain'){
+                iconElement.innerHTML = `<img src="img/weather/rain-icon.svg" class="daily-weather-icon">`;
+            }
+            else if(day.weather[0].main == 'Drizzle'){
+                iconElement.innerHTML = `<img src="img/weather/moon-drizzle-icon.svg" class="daily-weather-icon">`;
+            }
+            else if(day.weather[0].main == 'Mist'){
+                iconElement.innerHTML = `<img src="img/weather/mist-icon.svg" class="daily-weather-icon">`;
+            }
+            else if(day.weather[0].main == 'Snow'){
+                iconElement.innerHTML = `<img src="img/weather/snow-icon.svg" class="daily-weather-icon">`;
+            }
+            else if(day.weather[0].main == 'Thunderstorm'){
+                iconElement.innerHTML = `<img src="img/weather/thunder-icon.svg" class="daily-weather-icon">`;
+            }
+
+        }
+
+        dayElement.appendChild(iconElement);
+
+        const dayTemperature = Math.round(day.main.temp_max);
+        const nightTemperature = Math.round(day.main.temp_min);
+
+        const temperatureElement = document.createElement('div');
+        temperatureElement.classList.add('daily-temperature');
+        temperatureElement.innerHTML = `<p class="daily-temperature-day">${dayTemperature}°</p>&nbsp;<p class="daily-temperature-night">${nightTemperature}°</p>`
+
+        dayElement.appendChild(temperatureElement);
+
+        dailyWeatherContainer.appendChild(dayElement);
+
+    });
+
+}
+
+searchButton.addEventListener("click", async () => {
+    
+    const cityName = searchBox.value.trim();
+    await getHourlyWeather(cityName, apiKey);
+    await getDailyWeather(cityName, apiKey);
+
+});
