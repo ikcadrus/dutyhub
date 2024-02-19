@@ -5,8 +5,6 @@
         <meta charset="UTF-8">
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        <script src="script/settings.js?v=<?php echo time(); ?>"></script>
-        
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="styles/index.css?v=<?php echo time(); ?>">
@@ -27,47 +25,47 @@
                         <li class="nav-item me-lg-2 me-xl-2">
                             <a class="nav-link" aria-current="page" href="duties.php">
                                 <i class="bi bi-clipboard-check"></i>
-                                Duties
+                                <span class="duties-nav">Duties</span>
                             </a>
                         </li>
                         <li class="nav-item me-lg-2 me-xl-2">
                             <a class="nav-link" aria-current="page" href="calendar.php">
                                 <i class="bi bi-calendar-week"></i>
-                                Calendar
+                                <span class="calendar-nav">Calendar</span>
                             </a>
                         </li>
                         <li class="nav-item me-lg-2 me-xl-2">
                             <a class="nav-link" aria-current="page" href="weather.php">
                                 <i class="bi bi-cloud-drizzle"></i>
-                                Weather
+                                <span class="weather-nav">Weather</span>
                             </a>
                         </li>
                         <li class="nav-item dropdown me-lg-2 me-xl-2">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-gear"></i>
-                                Settings
+                                <span class="settings-nav">Settings</span>
                             </a>
                             <ul class="dropdown-menu col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-12 col-xl-12">
                                 <li class="sub-menu btn-group dropend col-sm-6 col-md-5 col-lg-12 col-xl-12">
                                     <a class="dropdown-item dropdown-toggle language-option d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-globe me-1"></i>
-                                        Language
+                                        <span class="language-nav">Language</span>
                                     </a>
                                     <div class="languages">
-                                    <ul class="dropdown-menu language-menu">
-                                        <li>
-                                            <a class="dropdown-item flags" href="#">
-                                                <img class="img-flag" src="img/logo/united-kingdom-flag-icon.svg" width="25.5" height="25.5">
-                                                English
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item flags" href="#">
-                                                <img class="img-flag" src="img/logo/poland-flag-icon.svg" width="25.5" height="25.5">
-                                                Polish
-                                            </a>
-                                        </li>
-                                    </ul>
+                                        <ul class="dropdown-menu language-menu">
+                                            <li id="english_id">
+                                                <a class="dropdown-item flags active" href="#" language="english">
+                                                    <img class="img-flag" src="img/logo/united-kingdom-flag-icon.svg" width="25.5" height="25.5">
+                                                    <span class="english-nav">English</span>
+                                                </a>
+                                            </li>
+                                            <li id="polish_id">
+                                                <a class="dropdown-item flags" href="#" language="polish">
+                                                    <img class="img-flag" src="img/logo/poland-flag-icon.svg" width="25.5" height="25.5">
+                                                    <span class="polish-nav">Polish</span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </li>
                                 <li>
@@ -75,7 +73,7 @@
                                         <div class="col-lg-10">
                                             <div class="d-flex align-items-center">
                                                 <i class="bi bi-moon-stars me-1"></i>
-                                                Dark mode
+                                                <span class="dark-mode-nav">Dark mode</span>
                                             </div>
                                         </div>
                                         <div class="col-lg-2 text-end">
@@ -93,7 +91,7 @@
                         <li class="nav-item me-lg-2 me-xl-2">
                             <a class="nav-link" aria-current="page" href="signin.php">
                                 <i class="bi bi-box-arrow-in-right"></i>
-                                Sign In
+                                <span class="sign-in-nav">Sign In</span>
                             </a>
                         </li>
                     </ul>
@@ -120,7 +118,7 @@
                     <div class="weather col-12 col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
                         <div class="weather-search col-12 pt-2">
                             <div class="row">
-                                <h1>Weather API</h1>
+                                <h1 class="weather-name">Weather API</h1>
                                 <div class="search-bar d-flex">
                                     <div class="input form-floating col-7 offset-2">
                                         <input type="text" name="taskHolder" class="form-control" id="floating-weather" placeholder="text" onfocus="whenInputFocus()" onfocusout="whenInputNotFocus()">
@@ -131,10 +129,10 @@
                                     </div>
                                 </div>
                                 <div class="information">
-                                    <h4>You must first search for the place</h4>
+                                    <h4 class="information-name">You must first search for the place</h4>
                                 </div>
                                 <div class="error">
-                                    <h4>Invalid city name</h4>
+                                    <h4 class="error-name">Invalid city name</h4>
                                 </div>
                                 <div class="weather-section col-12">
                                     <div class="city-place">
@@ -148,35 +146,10 @@
                                         <img src="img/weather/sunny-icon.svg" class="weather-icon">
                                         <h1 class="temperature"></h1>
                                     </div>
-                                    <hr><div class="hourly d-flex justify-content-center ">
-                                        <!-- <div class="hourly-weather-section col-1">
-                                            <div class="hourly-time">
-                                                <h6 class="time">22:00</h6>
-                                            </div>
-                                            <div class="hourly-icon">
-                                                <img src="img/weather/sunny-icon.svg" class="hourly-weather-icon">
-                                            </div>
-                                            <div class="hourly-temperature">
-                                                <p class="hourly-temperature">19°</p>
-                                            </div>
-                                        </div> -->
-                                    </div>
                                     <hr>
-                                    <div class="daily d-flex justify-content-center ">
-                                        <!-- <div class="daily-weather-section col-1">
-                                            <div class="daily-time">
-                                                <h6 class="time">Mon</h6>
-                                            </div>
-                                            <div class="daily-icon">
-                                                <img src="img/weather/moon-cloudy-icon.svg" class="daily-weather-icon">
-                                            </div>
-                                            <div class="daily-temperature">
-                                                <p class="daily-temperature-day">19°</p>
-                                                <p class="daily-temperature-night">12°</p>
-                                            </div>
-                                        </div> -->
-                                    </div>
-                                    
+                                    <div class="hourly d-flex justify-content-center "></div>
+                                    <hr>
+                                    <div class="daily d-flex justify-content-center "></div>
                                     <hr>
                                 </div>
                             </div>
@@ -186,5 +159,6 @@
             </div>
         </div>
         <script src="script/weather.js?v=<?php echo time(); ?>"></script>
+        <script src="script/settings.js?v=<?php echo time(); ?>"></script>
     </body>
 </html>

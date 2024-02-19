@@ -5,7 +5,6 @@
         <meta charset="UTF-8">
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        <script src="script/settings.js?v=<?php echo time(); ?>"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="styles/index.css?v=<?php echo time(); ?>">
@@ -25,47 +24,47 @@
                         <li class="nav-item me-lg-2 me-xl-2">
                             <a class="nav-link" aria-current="page" href="duties.php">
                                 <i class="bi bi-clipboard-check"></i>
-                                Duties
+                                <span class="duties-nav">Duties</span>
                             </a>
                         </li>
                         <li class="nav-item me-lg-2 me-xl-2">
                             <a class="nav-link" aria-current="page" href="calendar.php">
                                 <i class="bi bi-calendar-week"></i>
-                                Calendar
+                                <span class="calendar-nav">Calendar</span>
                             </a>
                         </li>
                         <li class="nav-item me-lg-2 me-xl-2">
                             <a class="nav-link" aria-current="page" href="weather.php">
                                 <i class="bi bi-cloud-drizzle"></i>
-                                Weather
+                                <span class="weather-nav">Weather</span>
                             </a>
                         </li>
                         <li class="nav-item dropdown me-lg-2 me-xl-2">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-gear"></i>
-                                Settings
+                                <span class="settings-nav">Settings</span>
                             </a>
                             <ul class="dropdown-menu col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-12 col-xl-12">
                                 <li class="sub-menu btn-group dropend col-sm-6 col-md-5 col-lg-12 col-xl-12">
                                     <a class="dropdown-item dropdown-toggle language-option d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-globe me-1"></i>
-                                        Language
+                                        <span class="language-nav">Language</span>
                                     </a>
                                     <div class="languages">
-                                    <ul class="dropdown-menu language-menu">
-                                        <li>
-                                            <a class="dropdown-item flags" href="#">
-                                                <img class="img-flag" src="img/logo/united-kingdom-flag-icon.svg" width="25.5" height="25.5">
-                                                English
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item flags" href="#">
-                                                <img class="img-flag" src="img/logo/poland-flag-icon.svg" width="25.5" height="25.5">
-                                                Polish
-                                            </a>
-                                        </li>
-                                    </ul>
+                                        <ul class="dropdown-menu language-menu">
+                                            <li>
+                                                <a class="dropdown-item flags active" href="#" language="english">
+                                                    <img class="img-flag" src="img/logo/united-kingdom-flag-icon.svg" width="25.5" height="25.5">
+                                                    <span class="english-nav">English</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item flags" href="#" language="polish">
+                                                    <img class="img-flag" src="img/logo/poland-flag-icon.svg" width="25.5" height="25.5">
+                                                    <span class="polish-nav">Polish</span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </li>
                                 <li>
@@ -73,7 +72,7 @@
                                         <div class="col-lg-10">
                                             <div class="d-flex align-items-center">
                                                 <i class="bi bi-moon-stars me-1"></i>
-                                                Dark mode
+                                                <span class="dark-mode-nav">Dark mode</span>
                                             </div>
                                         </div>
                                         <div class="col-lg-2 text-end">
@@ -91,7 +90,7 @@
                         <li class="nav-item me-lg-2 me-xl-2">
                             <a class="nav-link" aria-current="page" href="signin.php">
                                 <i class="bi bi-box-arrow-in-right"></i>
-                                Sign In
+                                <span class="sign-in-nav">Sign In</span>
                             </a>
                         </li>
                     </ul>
@@ -116,17 +115,17 @@
             <div class="row">
                 <div class="left-text col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
                     <h1 class="ms-xl-5 ps-xl-5">Duty<span class="glow-hub">Hub</span></h1>
-                    <h2 class="ms-xl-5 ps-xl-5">Easy-to-use application that will help you organize your daily tasks</h2>
+                    <h2 class="about-text ms-xl-5 ps-xl-5">Easy-to-use application that will help you organize your daily tasks</h2>
                 </div>
                 <div class="main-logo col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-0">
                     <img src="img/logo/logo-light.svg" class="col-12 main-logo" id="logo_center">    
                 </div>
                 <div class="right-text col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
                     <div class="row me-xl-5 pe-xl-5">
-                    <h1 class="">Contact Us</h1>
+                    <h1 class="contact">Contact Us</h1>
                     </div>
                     <div class="row me-xl-5 pe-xl-5">
-                    <h2 class="">We are available on the following social media</h2>
+                    <h2 class="contact-text">We are available on the following social media</h2>
                     </div>
                     <div class="row contact-size me-xl-5 pe-xl-5">
                     <a class="contact-us offset-1 col-1" href="https://www.facebook.com">
@@ -145,5 +144,6 @@
                 </div>
             </div>
         </div>
+        <script src="script/settings.js?v=<?php echo time(); ?>"></script>
     </body>
 </html>

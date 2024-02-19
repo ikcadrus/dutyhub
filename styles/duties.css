@@ -155,6 +155,16 @@ body{
     background-color: var(--mainColor);
 }
 
+.languages .dropdown-menu .dropdown-item.active,
+.languages .dropdown-menu .dropdown-item:active {
+    color: #FF0000 !important;
+    background-color: transparent !important;
+}
+
+.dropdown-item:hover{
+    filter: none!important;
+}
+
 .form-switch .form-check-input:focus{
     border-color: #ff000080;
     outline: 0;

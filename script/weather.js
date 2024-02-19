@@ -21,6 +21,8 @@ const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q="
 
 const searchBox = document.querySelector(".search-bar input");
 const searchButton = document.querySelector(".search-bar button");
+const englishButton = document.getElementById("english_id");
+const polishButton = document.getElementById("polish_id");
 const weatherIcon = document.querySelector(".weather-icon");
 
 
@@ -130,8 +132,16 @@ searchButton.addEventListener("click", ()=>{
 
 async function showDate(cityName){
 
-    const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    const days = { 
+        "english": ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+        "polish": ["Ndz","Pon","Wt","Śr","Czw","Pt","Sob"] 
+    };
+    const months = {
+        "english": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        "polish": ["Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrze", "Paź", "Lis", "Gru"]
+    };
+
+    const language = document.querySelector(".flags").classList.contains("active") ? "english" : "polish";
 
     try {
         const cityHour = await getCityTime(cityName);
@@ -139,9 +149,9 @@ async function showDate(cityName){
 
         const timezoneOffset = currentCityTime.getTimezoneOffset();
         currentCityTime.setMinutes((currentCityTime.getMinutes()) + timezoneOffset);
-        const dayOfWeek = days[currentCityTime.getDay()];
+        const dayOfWeek = days[language][currentCityTime.getDay()];
         const dayOfMonth = currentCityTime.getDate();
-        const monthOfYear = months[currentCityTime.getMonth()];
+        const monthOfYear = months[language][currentCityTime.getMonth()];
         const year = currentCityTime.getFullYear();
         const currentHour = currentCityTime.getHours();
         const currentMinutes = currentCityTime.getMinutes().toString().padStart(2, '0');
@@ -154,6 +164,18 @@ async function showDate(cityName){
 }
 
 searchButton.addEventListener("click", async () => {
+    const cityName = searchBox.value.trim();
+    const dateElement = document.querySelector(".date");
+    dateElement.textContent = await showDate(cityName);
+});
+
+englishButton.addEventListener("click", async () => {
+    const cityName = searchBox.value.trim();
+    const dateElement = document.querySelector(".date");
+    dateElement.textContent = await showDate(cityName);
+});
+
+polishButton.addEventListener("click", async () => {
     const cityName = searchBox.value.trim();
     const dateElement = document.querySelector(".date");
     dateElement.textContent = await showDate(cityName);
@@ -281,9 +303,13 @@ async function getDailyWeather(city, apiKey){
 
 }
 
-async function checkDailyWeather(dailyWeather, timezoneOffset){
+function checkDailyWeather(dailyWeather, timezoneOffset){
 
-    const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    const days = { 
+        "english": ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+        "polish": ["Ndz","Pon","Wt","Śr","Czw","Pt","Sob"] 
+    };
+
     const dailyWeatherContainer = document.querySelector(".daily");
     dailyWeatherContainer.innerHTML = '';
 
@@ -291,11 +317,15 @@ async function checkDailyWeather(dailyWeather, timezoneOffset){
 
         const dayElement = document.createElement('div');
         dayElement.classList.add('daily-weather-section', 'col-1');
+        console.log(day);
 
         const unixTimestamp = day.dt + timezoneOffset;
         const dateOfDay = new Date(unixTimestamp * 1000);
         const hourOfDay = new Date(unixTimestamp * 1000).getHours();
-        const dayOfWeek = days[dateOfDay.getDay()];
+        const dayOfWeekIndex = dateOfDay.getDay();
+
+        const language = document.querySelector(".flags").classList.contains("active") ? "english" : "polish";
+        const dayOfWeek = days[language][dayOfWeekIndex];
 
         const timeElement = document.createElement('div');
         timeElement.classList.add('daily-time');
@@ -374,11 +404,39 @@ async function checkDailyWeather(dailyWeather, timezoneOffset){
 
         dailyWeatherContainer.appendChild(dayElement);
 
-    });
+    })
 
 }
 
 searchButton.addEventListener("click", async () => {
+    
+    const cityName = searchBox.value.trim();
+    await getHourlyWeather(cityName, apiKey);
+    await getDailyWeather(cityName, apiKey);
+
+});
+
+searchBox.addEventListener("keyup", async function(event) {
+
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        searchButton.click();
+        const cityName = searchBox.value.trim();
+        await getHourlyWeather(cityName, apiKey);
+        await getDailyWeather(cityName, apiKey);
+    }
+    
+});
+
+englishButton.addEventListener("click", async () => {
+    
+    const cityName = searchBox.value.trim();
+    await getHourlyWeather(cityName, apiKey);
+    await getDailyWeather(cityName, apiKey);
+
+});
+
+polishButton.addEventListener("click", async () => {
     
     const cityName = searchBox.value.trim();
     await getHourlyWeather(cityName, apiKey);

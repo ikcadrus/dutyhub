@@ -26,47 +26,47 @@
                         <li class="nav-item me-lg-2 me-xl-2">
                             <a class="nav-link" aria-current="page" href="duties.php">
                                 <i class="bi bi-clipboard-check"></i>
-                                Duties
+                                <span class="duties-nav">Duties</span>
                             </a>
                         </li>
                         <li class="nav-item me-lg-2 me-xl-2">
                             <a class="nav-link" aria-current="page" href="calendar.php">
                                 <i class="bi bi-calendar-week"></i>
-                                Calendar
+                                <span class="calendar-nav">Calendar</span>
                             </a>
                         </li>
                         <li class="nav-item me-lg-2 me-xl-2">
                             <a class="nav-link" aria-current="page" href="weather.php">
                                 <i class="bi bi-cloud-drizzle"></i>
-                                Weather
+                                <span class="weather-nav">Weather</span>
                             </a>
                         </li>
                         <li class="nav-item dropdown me-lg-2 me-xl-2">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-gear"></i>
-                                Settings
+                                <span class="settings-nav">Settings</span>
                             </a>
                             <ul class="dropdown-menu col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-12 col-xl-12">
                                 <li class="sub-menu btn-group dropend col-sm-6 col-md-5 col-lg-12 col-xl-12">
                                     <a class="dropdown-item dropdown-toggle language-option d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-globe me-1"></i>
-                                        Language
+                                        <span class="language-nav">Language</span>
                                     </a>
                                     <div class="languages">
-                                    <ul class="dropdown-menu language-menu">
-                                        <li>
-                                            <a class="dropdown-item flags" href="#">
-                                                <img class="img-flag" src="img/logo/united-kingdom-flag-icon.svg" width="25.5" height="25.5">
-                                                English
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item flags" href="#">
-                                                <img class="img-flag" src="img/logo/poland-flag-icon.svg" width="25.5" height="25.5">
-                                                Polish
-                                            </a>
-                                        </li>
-                                    </ul>
+                                        <ul class="dropdown-menu language-menu">
+                                            <li>
+                                                <a class="dropdown-item flags active" href="#" language="english">
+                                                    <img class="img-flag" src="img/logo/united-kingdom-flag-icon.svg" width="25.5" height="25.5">
+                                                    <span class="english-nav">English</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item flags" href="#" language="polish">
+                                                    <img class="img-flag" src="img/logo/poland-flag-icon.svg" width="25.5" height="25.5">
+                                                    <span class="polish-nav">Polish</span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </li>
                                 <li>
@@ -74,7 +74,7 @@
                                         <div class="col-lg-10">
                                             <div class="d-flex align-items-center">
                                                 <i class="bi bi-moon-stars me-1"></i>
-                                                Dark mode
+                                                <span class="dark-mode-nav">Dark mode</span>
                                             </div>
                                         </div>
                                         <div class="col-lg-2 text-end">
@@ -92,7 +92,7 @@
                         <li class="nav-item me-lg-2 me-xl-2">
                             <a class="nav-link" aria-current="page" href="signin.php">
                                 <i class="bi bi-box-arrow-in-right"></i>
-                                Sign In
+                                <span class="sign-in-nav">Sign In</span>
                             </a>
                         </li>
                     </ul>
@@ -114,18 +114,18 @@
             </svg>
         </footer>
         <div class="container-fluid">
-            <div class="row  vertical-center">
+            <div class="row vertical-center">
                 <div class="new-task col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-10 offset-xl-1">
-                    <h1 class="duty-header">Edit Duty</h1>  
+                    <h1 class="edit-header">Edit Duty</h1>  
                     <div>
                         <div class="task-section form-floating col-xl-6 offset-xl-3">
                             <input type="text" name="taskHolder" class="form-control" id="floating-task" placeholder="text" maxlength="50" required>
-                            <label for="floating-task">Change your duty</label>
-                            <button type="button" class="btn btn-dark mt-2 col-4 offset-4 col-sm-4 offset-sm-4 col-md-2 offset-md-5 col-lg-2 offset-lg-5  offset-xl-5" id="button">Save</button>
+                            <label for="floating-task"><span class="floating-duty">Change your duty</span></label>
+                            <button type="button" class="btn btn-dark mt-2 col-4 offset-4 col-sm-4 offset-sm-4 col-md-2 offset-md-5 col-lg-2 offset-lg-5  offset-xl-5 btn-save" id="button">Save</button>
                             <div class="back-duties mt-2 col-4 offset-4 col-sm-4 offset-sm-4 col-md-4 offset-md-4 col-lg-4 offset-lg-4 col-xl-2 offset-xl-5 text-center">
                                 <a href="duties.php" class="back-duties-text me-2">
                                     <i class="bi bi-chevron-left"></i>
-                                    Back 
+                                    <span class="btn-back">Back</span> 
                                 </a>
                             </div>
                         </div>
@@ -133,5 +133,6 @@
                 </div>
             </div>
         </div>
+        <script src="script/settings.js?v=<?php echo time(); ?>"></script>
     </body>
 </html>

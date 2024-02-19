@@ -1,3 +1,38 @@
+/* Change color mode (Dafault colors) */
+
+:root{
+
+    --backgroundColor: white;
+    --backgroundTheme: #38383840;
+    --mainColor: #ededed;
+    --whiteColor: #fff;
+    --fontColor: black;
+    --backgroundFontColor: #b2bec3;
+    --navbarTogglerColor: default;
+    --lowPriority: #198754;
+    --midPriority: #ffc107;
+    --highPriority: #dc3545;
+    --geoIcon: #545454;
+    --temperatureNight: #70757a;;
+
+}
+
+.dark-theme{
+
+    --backgroundColor: #383838;
+    --backgroundTheme: #c7c7c740;
+    --mainColor: #272727;
+    --whiteColor: #000;
+    --fontColor: white;
+    --backgroundFontColor: #b2bec3;
+    --navbarTogglerColor: white;
+    --geoIcon: #c9c9c9;
+    --temperatureNight: #cac3bc;
+
+}  
+
+/* Body */
+
 #footer{
     position: fixed;
 }
@@ -14,7 +49,7 @@
 }
 
 .weather{
-    background-color: rgba(56, 56, 56, 0.25);
+    background-color: var(--backgroundTheme);
     border-radius: 24px;
     height: 662.5px;
 }
@@ -52,11 +87,12 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: var(--fontColor);
 }
 
 .bi-geo-alt-fill{
     font-size: 20px;
-    color: #545454;
+    color: var(--geoIcon);
     margin-top: 2.5px;
 }
 
@@ -103,14 +139,19 @@
 }
 
 h2{
-    color: black;
+    color: var(--fontColor);
     font-weight: 700;
 }
 
 h3{
+    color: var(--fontColor);
     display: flex;
     justify-content: center;
     font-weight: 700;
+}
+
+h4{
+    color: var(--fontColor);
 }
 
 .search-show-hide{
@@ -150,6 +191,7 @@ p{
 
 .time{
     font-weight: 400;
+    color: var(--fontColor);
 }
 
 .hourly-icon{
@@ -168,6 +210,7 @@ p{
     justify-content: center;
     text-align: center;
     font-size: 13px;
+    color: var(--fontColor);
 }
 
 .daily{
@@ -209,6 +252,7 @@ p{
     justify-content: center;
     text-align: center;
     font-size: 13px;
+    color: var(--fontColor);
 }
 
 .daily-temperature-day{
@@ -217,7 +261,7 @@ p{
 
 .daily-temperature-night{
     padding-left: 1px;
-    color: #70757a;
+    color: var(--temperatureNight);
 }
 
 .hourly, .daily {
@@ -238,6 +282,7 @@ p{
         display: flex;
         justify-content: start!important;
         margin-left: 12px;
+        margin-right: 12px ;
     }
 
 }
@@ -248,6 +293,7 @@ p{
         display: flex;
         justify-content: start!important;
         margin-left: 12px;
+        margin-right: 12px;
     }
 
 }

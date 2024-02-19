@@ -1,13 +1,56 @@
+/* Change color mode (Dafault colors) */
+
+:root{
+
+    --backgroundColor: white;
+    --backgroundTheme: #38383840;
+    --mainColor: #ededed;
+    --whiteColor: #fff;
+    --fontColor: black;
+    --backgroundFontColor: #b2bec3;
+    --navbarTogglerColor: default;
+    --lowPriority: #198754;
+    --midPriority: #ffc107;
+    --highPriority: #dc3545;
+
+}
+
+.dark-theme{
+
+    --backgroundColor: #383838;
+    --backgroundTheme: #c7c7c740;
+    --mainColor: #272727;
+    --whiteColor: #000;
+    --fontColor: white;
+    --backgroundFontColor: #b2bec3;
+    --navbarTogglerColor: white;
+
+}  
+
+/* Body */
+
 #footer{
     position: fixed;
 }
+
+.languages .dropdown-menu .dropdown-item.active,
+.languages .dropdown-menu .dropdown-item:active {
+    color: #FF0000 !important;
+    background-color: transparent !important;
+}
+
+.dropdown-item:hover{
+    filter: none!important;
+}
+
+/* Calendar */
 
 .calendar-place{
     position: relative;
 }
 
 .calendar{
-    background-color: rgba(56, 56, 56, 0.25);
+    background-color: var(--backgroundTheme);
     border-radius: 24px;
     min-height: 387.685px;
 }
@@ -28,6 +71,7 @@
     grid-template-columns: repeat(7, 1fr);
     font-size: 20px;
     font-weight: 600;
+    color: var(--fontColor);
 }
 
 .week div{
@@ -37,6 +81,10 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.date{
+    color: var(--fontColor);
 }
 
 .days{
@@ -50,7 +98,7 @@
 }
 
 .day{
-    color: black;
+    color: var(--fontColor);
 }
 
 div.day{
@@ -66,7 +114,7 @@ div.day{
 }
 
 .prev-date:hover{
-    color: black;
+    color: var(--fontColor);
 }
 
 .next-date{
@@ -74,7 +122,7 @@ div.day{
 }
 
 .next-date:hover{
-    color: black;
+    color: var(--fontColor);
 }
 
 .today{
@@ -106,10 +154,18 @@ div.day{
 
 .prev:hover{
     color: rgba(255, 0, 0, 0.75);
-    border-color: rgba(70, 70, 70, 0.25);
+    border-color: #464646bf;
 }
 
 .next:hover{
     color: rgba(255, 0, 0, 0.75);
-    border-color: rgba(70, 70, 70, 0.25);
+    border-color: #464646bf;
+}
+
+.prev{
+    color: var(--fontColor);
+}
+
+.next{
+    color: var(--fontColor);
 }

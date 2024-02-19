@@ -23,8 +23,8 @@
 /* All on center side */
 
 .vertical-center {
-    min-height: 92.75%;
-    min-height: 92.75vh; 
+    min-height: 92%;
+    min-height: 92vh; 
     display: flex;
     align-items: center;
 }
@@ -204,6 +204,16 @@ h2{
 
 .dropdown-menu{
     background-color: var(--mainColor);
+}
+
+.languages .dropdown-menu .dropdown-item.active,
+.languages .dropdown-menu .dropdown-item:active {
+    color: #FF0000 !important;
+    background-color: transparent !important;
+}
+
+.dropdown-item:hover{
+    filter: none!important;
 }
 
 input[type='checkbox']:checked{

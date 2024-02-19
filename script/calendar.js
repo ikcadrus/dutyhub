@@ -9,20 +9,10 @@ let today = new Date();
 let month = today.getMonth();
 let year = today.getFullYear();
 
-const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-];
+const monthNames = {
+    "english": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    "polish": ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"]
+};
 
 function basicCalendar(){
 
@@ -34,7 +24,8 @@ function basicCalendar(){
     const day = firstDay.getDay();
     const nextDays = 7 - lastDay.getDay();
 
-    date.innerHTML = months[month] + " " + year;
+    const language = document.querySelector(".flags").classList.contains("active") ? "english" : "polish";
+    date.innerHTML = monthNames[language][month] + " " + year;
 
     let days = "";
 
