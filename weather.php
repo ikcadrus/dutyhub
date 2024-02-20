@@ -7,7 +7,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="styles/index.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="styles/common.css?v=<?php echo time(); ?>">
         <link rel="stylesheet" href="styles/weather.css?v=<?php echo time(); ?>">
     </head>
     <body>
@@ -114,7 +114,7 @@
         </footer>
         <div class="container-fluid mt-5 pt-4 mb-5">
             <div class="row">
-                <div class="weather-place">
+                <div class="weather-place mt-5">
                     <div class="weather col-12 col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
                         <div class="weather-search col-12 pt-2">
                             <div class="row">

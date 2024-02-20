@@ -1,41 +1,4 @@
-/* Change color mode (Dafault colors) */
-
-:root{
-
-    --backgroundColor: white;
-    --backgroundTheme: #38383840;
-    --mainColor: #ededed;
-    --whiteColor: #fff;
-    --fontColor: black;
-    --backgroundFontColor: #b2bec3;
-    --navbarTogglerColor: default;
-    --lowPriority: #198754;
-    --midPriority: #ffc107;
-    --highPriority: #dc3545;
-    --geoIcon: #545454;
-    --temperatureNight: #70757a;;
-
-}
-
-.dark-theme{
-
-    --backgroundColor: #383838;
-    --backgroundTheme: #c7c7c740;
-    --mainColor: #272727;
-    --whiteColor: #000;
-    --fontColor: white;
-    --backgroundFontColor: #b2bec3;
-    --navbarTogglerColor: white;
-    --geoIcon: #c9c9c9;
-    --temperatureNight: #cac3bc;
-
-}  
-
 /* Body */
-
-#footer{
-    position: fixed;
-}
 
 ::-webkit-scrollbar {
     width: 0px;
@@ -126,45 +89,18 @@
     height: 154px;
 }
 
-.left-side{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.right-side{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+/* Headers and others */
 
 h2{
     color: var(--fontColor);
     font-weight: 700;
 }
 
-h3{
-    color: var(--fontColor);
-    display: flex;
-    justify-content: center;
-    font-weight: 700;
+p{
+    margin: 0;
 }
 
-h4{
-    color: var(--fontColor);
-}
-
-.search-show-hide{
-    display: flex;
-    text-align: center;
-}
-
-.menu-icon{
-    display: flex;
-    align-items: center;
-    font-size: 25px;
-    padding-left: 0;
-}
+/* Hourly section */
 
 .hourly{
     margin-left: 24px;
@@ -176,10 +112,6 @@ h4{
     border-radius: 12px;
     width: 75px;
     margin-left: 13px;
-}
-
-p{
-    margin: 0;
 }
 
 .hourly-time{
@@ -212,6 +144,8 @@ p{
     font-size: 13px;
     color: var(--fontColor);
 }
+
+/* Daily section */
 
 .daily{
     margin-left: 24px;
@@ -264,17 +198,19 @@ p{
     color: var(--temperatureNight);
 }
 
+.daily-weather-section {
+    display: inline-block;
+    vertical-align: top;
+
+}
+
 .hourly, .daily {
     overflow-x: auto;
     white-space: nowrap;
     max-width: 100%;
 }
 
-.daily-weather-section {
-    display: inline-block;
-    vertical-align: top;
-
-}
+/* Media queries */
 
 @media all and (max-width: 892.5px){
 

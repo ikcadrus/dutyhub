@@ -1,30 +1,3 @@
-/* Change color mode (Dafault colors) */
-
-:root{
-
-    --backgroundColor: white;
-    --mainColor: #ededed;
-    --whiteColor: #fff;
-    --fontColor: black;
-    --backgroundFontColor: #b2bec3;
-    --navbarTogglerColor: default;
-    --lowPriority: #198754;
-    --midPriority: #ffc107;
-    --highPriority: #dc3545;
-
-}
-
-.dark-theme{
-
-    --backgroundColor: #383838;
-    --mainColor: #272727;
-    --whiteColor: #000;
-    --fontColor: white;
-    --backgroundFontColor: #b2bec3;
-    --navbarTogglerColor: white;
-
-}  
-
 /* All on center side */
 
 .vertical-center {
@@ -35,47 +8,6 @@
 }
 
 /* Waves */
-
-.custom-shape-divider-top-1704668404 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-}
-
-.custom-shape-divider-top-1704668404 svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 500px;
-}
-
-.custom-shape-divider-top-1704668404 .shape-fill {
-    fill: var(--mainColor);
-}
-
-.custom-shape-divider-bottom-1704670510 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom-1704670510 svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 250px;
-}
-
-.custom-shape-divider-bottom-1704670510 .shape-fill {
-    fill: var(--mainColor);
-}
 
 #footer{
     position: fixed;
@@ -90,132 +22,6 @@
     width: 100%;
     flex-shrink: 0;
 }
-
-/* Scrollbar */
-
-body::-webkit-scrollbar {
-    background-color: var(--whiteColor);
-    width: 16px;
-}
-
-body::-webkit-scrollbar-track {
-    background-color: var(--whiteColor);
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: #babac0;
-    border-radius: 16px;
-    border: 4px solid var(--whiteColor);
-}
-
-body::-webkit-scrollbar-button {
-    display:none;
-}
-
-/* Website style (dark/light mode) */
-
-body{
-    background-color: var(--backgroundColor);
-}
-
-/* Navbar START */
-
-.navbar{
-    background-color: var(--mainColor);
-}
-
-.navbar-toggler{
-    background-color: var(--navbarTogglerColor);
-}
-
-.navbar-brand{
-    align-items: center;
-    display: flex;  
-    font-weight: 700;
-}
-
-.navbar-brand a{
-    text-decoration: none;
-}
-
-.nav-item{
-    font-size: 125%;
-}
-
-.nav-link{
-    text-align: center;
-}
-
-.sub-menu:hover .language-menu{
-    display: block;
-    align-items: center;
-}
-
-.dropdown-menu{
-    background-color: var(--mainColor);
-}
-
-.languages .dropdown-menu .dropdown-item.active,
-.languages .dropdown-menu .dropdown-item:active {
-    color: #FF0000 !important;
-    background-color: transparent !important;
-}
-
-.dropdown-item:hover{
-    filter: none!important;
-}
-
-.form-switch .form-check-input:focus{
-    border-color: #ff000080;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem #ff000080;
-}
-
-.collapse ul li i{
-    font-weight: bold;
-}
-
-.collapse ul li a{
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border-radius: 9px; 
-    color: var(--fontColor);
-}
-
-.collapse ul li a:hover{
-    background-color: var(--mainColor);
-    color: #FF0000;
-    filter: drop-shadow(0 0 1px #FF0000);
-}
-
-.glow-hub:hover{
-    color:#FF0000;
-    filter: drop-shadow(0 0 1px #FF0000);
-}
-
-.img-flag{
-    margin-top: -2%;
-}
-
-.form-switch input[type='checkbox']:checked{
-    background-color: black;
-    border-color: black;
-}
-
-.form-switch .form-check-input:not(:checked) {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='black'/%3e%3c/svg%3e");
-}
-
-.dark-mode-type:checked{
-    border-color: black;
-    box-shadow: inset 0 0 0 0 black, 0 0 4px black;
-}
-
-#logo_name{
-    color: var(--fontColor);
-}
-
-/* Navbar END */
 
 /* Input text place */
 
@@ -335,32 +141,6 @@ input[type="radio"]{
 
 button.btn.border-0{
     padding-left: 0;
-}
-
-/* Headers and others*/
-
-h1{
-    font-weight: 700;
-    text-align: center;
-    color:var(--fontColor);
-}
-
-h2{
-    text-align: center;
-    position: relative;
-    color:var(--fontColor);
-}
-
-h4{
-    color:var(--fontColor);
-}
-
-h6{
-    color:var(--fontColor);
-}
-
-p{
-    margin-bottom: 0;
 }
 
 /* Duties list */
@@ -532,43 +312,6 @@ ul{
 }
 
 /* Media queries */
-
-@media (min-width: 992px){
-
-    .language-menu{
-        margin-top: -5.5%;
-        justify-content: center;
-        width: 160px;
-        height: 87.33px;
-    }
-
-    .dropdown-menu{
-        width: 170px;
-    }
-
-}
-
-@media (max-width: 991px){
-
-    .sub-menu:hover .language-menu{
-        display: flex;
-    }
-
-    .language-menu{
-        padding-top: 0px;
-        padding-bottom: 0px;
-        height: 38px;
-    }
-    
-    .sub-menu{
-        height: 38px;
-    }
-
-    .dropdown-menu{
-        margin: auto;
-    }
-
-}
 
 @media (min-width: 768px){
     
