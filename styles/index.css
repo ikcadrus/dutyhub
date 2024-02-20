@@ -260,6 +260,10 @@ input[type='checkbox']:checked{
         height: 87.33px;
     }
 
+    .dropdown-menu{
+        width: 170px;
+    }
+
 }
 
 @media (max-width: 991px){

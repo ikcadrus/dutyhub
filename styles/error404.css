@@ -1,0 +1,140 @@
+/* Scrollbar */
+
+body::-webkit-scrollbar {
+    background-color: #fff;
+    width: 16px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #babac0;
+    border-radius: 16px;
+    border: 4px solid #fff;
+}
+
+body::-webkit-scrollbar-button {
+    display:none;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+/* Website style */
+
+body{
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+/* Left side */
+
+.left{
+    height: 100vh;
+    background-color: #ededed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Right side */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap");
+
+.text h1 {
+	font-size: 10vmin;
+	font-weight: 900;
+	font-family: "Montserrat", sans-serif;
+	color: black;
+}
+
+.not-found h1{
+    font-size: 5vmin;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error {
+	font-size: 5vmin;
+	font-weight: 900;
+	font-family: "Montserrat", sans-serif;
+	color: white;
+	opacity: 0.9;
+	mix-blend-mode: exclusion;
+	animation: errorMove 2s ease-out infinite;
+    margin-top: -6rem;
+    position: relative;
+}
+
+.back-option h1 {
+    font-size: 2.5vmin;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes errorMove {
+	0% {
+		transform: translateX(18em) rotateZ(0deg);
+	}
+	100% {
+		transform: translateX(-0.1em) rotateZ(0deg);
+	}
+}
+
+/* Media queries */
+
+
+@media all and (max-width: 945px){
+    
+    @media all and (min-width: 769px){
+
+        .error{
+            margin-top: -21%;
+        }
+
+    }
+
+}
+
+@media all and (width: 768px){
+
+    .left{
+        width: 100%;
+    }
+
+    .right{
+        width: 60%;
+        margin-left: 20%;
+        margin-top: 2.5%;
+    }
+
+}
+
+@media all and (max-width: 768px){
+
+    .left{
+        height: 25%;
+    }
+
+    .logo{
+        width: 50%;
+    }
+
+    .error{
+        margin-top: -11%;
+    }
+
+}
