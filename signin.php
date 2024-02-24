@@ -1,3 +1,27 @@
+<?php
+require "config.php";
+$conn = mysqli_connect("localhost", "root", "", "dutybase");
+if(isset($_POST["submit"])){
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
+    if(mysqli_num_rows($result) > 0){
+        $row = mysqli_fetch_assoc($result);
+        $correctPassword = $row["password"];
+        if(password_verify($password, $correctPassword)) {
+            $_SESSION["user_id"] = $row["id"];
+            $_SESSION["login"] = true;
+            $_SESSION["id"] = $row["id"];
+            header("Location: index.php");
+        }else{
+            echo "<script> alert('Wrong Password'); </script>";
+        }
+    }else{
+        echo "<script> alert('User Not Registered'); </script>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,6 +29,7 @@
         <meta charset="UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+        <script src="script/pwPreviewSignIn.js"></script>
         <link rel="stylesheet" href="styles/signin.css?v=<?php echo time(); ?>">
         <link rel="stylesheet" href="styles/common.css?v=<?php echo time(); ?>">
     </head>
@@ -49,7 +74,7 @@
                                 </div>
                             </div>
                             <div class="button-section">
-                                <button type="button" class="btn btn-dark col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">Sign In</button>
+                                <button type="submit" name="submit" class="btn btn-dark col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">Sign In</button>
                             </div>
                             <div class="register-question col-8 offset-2 mt-2 text-center ">
                                 Don't have an account? 
