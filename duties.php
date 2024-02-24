@@ -1,3 +1,16 @@
+<?php
+require "config.php";
+$conn = mysqli_connect("localhost", "root", "", "dutybase");
+
+if(isset($_SESSION["user_id"])){
+    $user_id = mysqli_real_escape_string($conn, $_SESSION["user_id"]);
+    $query = "SELECT * FROM users where id=$user_id";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -88,6 +101,15 @@
                             </ul>
                         </li>
                     </ul>
+                    <ul class="navbar-nav mb-lg-0 dropdown ">
+                        <?php if(isset($_SESSION['user_id'])) : ?>
+                            <li class="nav-item me-lg-2 me-xl-2">
+                            <a class="nav-link" aria-current="page" href="<?=URL?>signout.php">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span class="sign-out-nav">Sign Out</span>
+                            </a>
+                        </li>
+                        <?php else : ?>
                     <ul class="navbar-nav mb-lg-0">
                         <li class="nav-item me-lg-2 me-xl-2">
                             <a class="nav-link" aria-current="page" href="signin.php">
@@ -95,6 +117,7 @@
                                 <span class="sign-in-nav">Sign In</span>
                             </a>
                         </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
