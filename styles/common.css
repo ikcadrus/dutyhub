@@ -232,6 +232,18 @@ p{
     margin-bottom: 0;
 }
 
+/* Form check */
+
+.is-valid {
+    border-color: #198754 !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(25, 135, 84, 0.6) !important;
+}
+
+.is-invalid {
+    border-color: #FF0000 !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6) !important;
+}
+
 /* Media queries */
 
 @media (min-width: 992px){
