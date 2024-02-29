@@ -4,9 +4,62 @@ $conn = mysqli_connect("localhost", "root", "", "dutybase");
 
 if(isset($_SESSION["user_id"])){
     $user_id = mysqli_real_escape_string($conn, $_SESSION["user_id"]);
-    $query = "SELECT * FROM users where id=$user_id";
+    $query = "SELECT * FROM duties WHERE id_user=$user_id ORDER BY id DESC";
+
+    if(isset($_GET['fromAtoZ'])) {
+        $query = "SELECT * FROM duties WHERE id_user=$user_id ORDER BY duty ASC";
+    } elseif(isset($_GET['fromZtoA'])) {
+        $query = "SELECT * FROM duties WHERE id_user=$user_id ORDER BY duty DESC";
+    } elseif(isset($_GET['filtrByCheck'])) {
+        $query = "SELECT * FROM duties WHERE id_user=$user_id ORDER BY checked DESC";
+    } elseif(isset($_GET['filtrByPriority'])) {
+        $query = "SELECT * FROM duties WHERE id_user=$user_id ORDER BY importance DESC";
+    }
+
     $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_assoc($result);
+}else {
+    header("Location: signin.php");
+    exit();
+}
+
+if(isset($_POST["submit"])){
+    $current_user_id = $_SESSION["id"];
+    $dutyHolder = filter_var($_POST["dutyHolder"], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $importance = isset($_POST["flexRadioDefault"]) ? $_POST["flexRadioDefault"] : null;
+    if(strlen($dutyHolder) > 0 && strlen($dutyHolder) <= 50){
+        if($importance !== null){
+            $query = "INSERT INTO duties (id_user,importance,duty) VALUES ($current_user_id,'$importance','$dutyHolder')";
+            if(mysqli_query($conn, $query)){
+                header("Location: duties.php");
+                exit();
+            } else {
+                echo "<script>alert('An error occurred while adding data to the database')</script>";
+            }
+        } else {
+            echo "<script>alert('You must select one of the three importance buttons')</script>";
+        }
+    } else {
+        echo "<script>alert('Task should contain a maximum of 85 characters')</script>";
+    }
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"]) && isset($_POST["checked"])) {
+    $id = $_POST["id"];
+    $isChecked = $_POST['checked'];
+    $isChecked = $isChecked == '1' ? 1 : 0;
+    $query = "UPDATE duties SET checked = ? WHERE id = ?";
+    $result = mysqli_prepare($conn, $query);
+    
+    mysqli_stmt_bind_param($result, "ii", $isChecked, $id);
+
+    if (mysqli_stmt_execute($result)) {
+        echo "Update successful";
+    } else {
+        echo "Update failed: " . mysqli_error($conn);
+    }
+
+    mysqli_stmt_close($result);
+    exit();
 }
 
 ?>
@@ -138,18 +191,18 @@ if(isset($_SESSION["user_id"])){
         </footer>
         <div class="container-fluid">
             <div class="row">
-                <div class="new-task col-12 col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-10 offset-xl-1 mt-5 pt-5">
+                <form method="POST" autocomplete="off" class="new-task col-12 col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-10 offset-xl-1 mt-5 pt-5">
                     <h1 class="duty-header">Face Your Duty</h1>  
                     <div class="row">
                         <div class="task-section form-floating col-10 offset-1 col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-6 offset-xl-3" id="floating-form">
-                            <input type="text" name="taskHolder" class="form-control" id="floating-task" placeholder="text" maxlength="50" required oninput="accessSubmitButton()">
+                            <input type="text" name="dutyHolder" class="form-control" id="floating-task" placeholder="text" maxlength="50" required oninput="accessSubmitButton()">
                             <label for="floating-task"><span class="floating-text">Insert your duty</span></label>
                         </div>
                         <div class="importance-button col-1">
-                            <button class="btn border-0 btn-option" data-toggle="tooltip" title="More options" onclick="changeButton()"><i class="bi bi-three-dots dots" id="imp"></i></button>
+                            <button class="btn border-0 btn-option" type="button" data-toggle="tooltip" title="More options" onclick="changeButton()"><i class="bi bi-three-dots dots" id="imp"></i></button>
                         </div>
                         <div>
-                            <form class="row importance-section col-lg-6 offset-lg-3 col-xl-6 offset-xl-3 mt-2 mb-2" id='importance-section'>
+                            <div class="row importance-section col-lg-6 offset-lg-3 col-xl-6 offset-xl-3 mt-2 mb-2" id='importance-section'>
                                 <div class="importance mb-3">
                                     <h4 class="importance-text">Choose the importance of duty</h4>
                                 </div>
@@ -159,11 +212,11 @@ if(isset($_SESSION["user_id"])){
                                 </div>
                                 <div class="radio-mid form-check col-4 d-flex justify-content-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" value="2" id="flexRadioDefault2" onclick="accessSubmitButton()">
-                                    <label class="form-check-label" for="flexRadioDefault1"></label>
+                                    <label class="form-check-label" for="flexRadioDefault2"></label>
                                 </div>
                                 <div class="radio-high form-check col-4 d-flex justify-content-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" value="3" id="flexRadioDefault3" onclick="accessSubmitButton()">
-                                    <label class="form-check-label" for="flexRadioDefault1"></label>
+                                    <label class="form-check-label" for="flexRadioDefault3"></label>
                                 </div>
                                 <div class="importance col-4">
                                     <h6 class="low">Low importance</h6>
@@ -174,68 +227,78 @@ if(isset($_SESSION["user_id"])){
                                 <div class="importance col-4">
                                     <h6 class="high">High importance</h6>
                                 </div>
-                            </form>
+                        </div>
                             <div class="button col-6 offset-3">
-                                <button type="button" class="btn btn-dark btn-submit mt-2 col-6 offset-3 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-4 offset-lg-4 col-xl-2 offset-xl-5" id="buttonSubmit" disabled>Submit</button>
+                                <button type="submit" name="submit" class="btn btn-dark btn-submit mt-2 col-6 offset-3 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-4 offset-lg-4 col-xl-2 offset-xl-5" id="buttonSubmit" disabled>Submit</button>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
                 <div class="duty-main-text mt-5 pt-5">
                     <h2 class="manage-duty">Manage duties</h2>
                     <div class="col-2 offset-5 d-flex justify-content-center">
-                    <button class="btn border-0" id="filter-button0" data-toggle="tooltip" title="From A to Z">
+                    <button class="btn border-0 filter-button" id="filter-button0" name="fromAtoZ" data-toggle="tooltip" title="From A to Z">
                         <i class="bi bi-sort-alpha-down"></i>
                     </button>
-                    <button class="btn border-0" id="filter-button1" data-toggle="tooltip" title="From Z to A">
+                    <button class="btn border-0 filter-button" id="filter-button1" name="fromZtoA" data-toggle="tooltip" title="From Z to A">
                         <i class="bi bi-sort-alpha-down-alt"></i>
                     </button>
                     <button class="btn border-0" id="filter-button2" data-toggle="tooltip" title="Sort options" onclick="filterButton()">
                         <i class="bi bi-filter filter"></i>
                     </button>
-                    <button class="btn border-0" id="filter-button3" data-toggle="tooltip" title="By Data">
-                        <i class="bi bi-stopwatch"></i>
+                    <button class="btn border-0 filter-button" id="filter-button3" name="filtrByCheck" data-toggle="tooltip" title="By Check">
+                        <i class="bi bi-check-lg"></i>
                     </button>
-                    <button class="btn border-0" id="filter-button4" data-toggle="tooltip" title="By Priority">
+                    <button class="btn border-0 filter-button" id="filter-button4" name="filtrByPriority" data-toggle="tooltip" title="By Priority">
                         <i class="bi bi-exclamation-triangle"></i>
                     </button>
                     </div>
                 </div>
+                <?php if(mysqli_num_rows($result) > 0) : ?>
                 <ul class="duties-list mt-2 col-12 col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                <?php while($row = mysqli_fetch_assoc($result)) : ?>
                     <li class="duty mb-3 row">
-                        <div class="accept form-check col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
-                            <input class="form-check-input" type="checkbox" id="checkbox" onclick="changeText()">
+                        <div class="accept form-check col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1" 
+                        <?php if($row['importance'] == 1) :?> style="background-color: #198754";>
+                        <?php elseif($row['importance'] == 2) :?> style="background-color: #ffc107";>
+                        <?php else :?> style="background-color: #dc3545";>
+                        <?php endif; ?>
+                            <input class="form-check-input" type="checkbox" id="checkbox" data-id="<?= $row['id'] ?>" name="checked" <?= $row['checked'] == 1 ? 'checked' : ''?> onclick="changeText(this)" value="<?= $row['checked'] ?>">
                             <label class="form-check-label" for="checkbox"></label>
                         </div>
                         <div class="duty-date col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
                             <div class="row all-date">
                                 <i class="date-icon bi bi-calendar2-check"></i>
-                                <p class="date">17/01/24<p>
+                                <p class="date"><?= $row['date'] ?><p>
                             </div>
                         </div>
-                        <div class="duty-text col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 text-break" id="duty-ready">
-                            12345678901234567890123456789012345678901234567890
+                        <div class="duty-text col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 text-break" name="duty-text">
+                            <?= $row['duty'] ?>
                         </div>
                         <div class="edit col-1">
-                            <a class="duty-icon" href="changeDuty.php">
+                            <a class="duty-icon" href="changeDuty.php?id=<?= $row['id'] ?>">
                                 <i class="bi bi-pencil-square"></i>
                             </a>    
                         </div>
                         <div class="delete col-1">
-                            <a class="duty-icon" href="">
+                            <a class="duty-icon" href="deleteDuty.php?id=<?= $row['id'] ?>">
                                 <i class="bi bi-trash"></i>
                             </a>
                         </div>
-                    </li>                  
+                    </li>    
+                    <?php endwhile; ?>
                 </ul>
-                <!-- <div class="empty-place">
-                    <div class="empty-text mt-5">
-                        <h4>You don't have any added duties yet</h4>
+                <?php endif; ?>
+                <?php if(mysqli_num_rows($result) == 0) : ?>
+                    <div class="empty-place">
+                        <div class="empty-text mt-5">
+                            <h4>You don't have any added duties yet</h4>
+                        </div>
+                        <div class="emoji d-flex justify-content-center ">
+                            <img src="img/logo/sad-face.svg" width="150px" height="150px">
+                        </div>
                     </div>
-                    <div class="emoji mt-5 d-flex justify-content-center ">
-                        <img src="img/logo/sad-face.svg" width="150px" height="150px">
-                    </div>
-                </div> -->
+                <?php endif; ?>
             </div>
         </div>
         <script src="script/settings.js?v=<?php echo time(); ?>"></script>

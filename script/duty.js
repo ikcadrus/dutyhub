@@ -1,15 +1,20 @@
-function changeText(){
+function changeText() {
+    var checkboxes = document.querySelectorAll('.form-check-input');
 
-    var checkbox = document.getElementById('checkbox');
-    var text = document.getElementsByClassName('duty-text');
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            var task = checkbox.closest('.duty');
+            var text = task.querySelector('.duty-text');
 
-    if(checkbox.checked){
-        text.style.textDecoration = 'line-through';
-        text.style.color = '#bdbdbd';
-    } else {
-        text.style.textDecoration = 'none';
-        text.style.color = 'black';
-    }
+            if (checkbox.checked) {
+                text.style.textDecoration = 'line-through';
+                text.style.color = '#bdbdbd';
+            } else {
+                text.style.textDecoration = 'none';
+                text.style.color = 'black';
+            }
+        });
+    });
 }
 
 function changeButton(){
@@ -61,4 +66,25 @@ function filterButton(){
         sortButtonImportance.style.display = 'flex';
     }
 
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var buttons = document.querySelectorAll('.filter-button');
+
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var paramName = button.getAttribute('name');
+            window.location.href = 'duties.php?' + paramName + '=true';
+        });
+    });
+});
+
+function changeText(checkbox) {
+    var id = checkbox.getAttribute('data-id');
+    var isChecked = checkbox.checked ? 1 : 0;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "duties.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("id=" + id + "&checked=" + isChecked);
 }

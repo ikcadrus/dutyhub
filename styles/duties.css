@@ -181,6 +181,7 @@ button.btn.border-0{
     font-weight: 500;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .duties-list{
@@ -220,7 +221,7 @@ ul{
     border-radius: 24px;
     background-color: white;
     text-decoration: none;
-    height: 75px;
+    height: 85px;
     border: solid 2px var(--mainColor);
 }
 
@@ -248,6 +249,7 @@ ul{
 }
 
 .duty-date{
+    display: flex;
     color: #b2bec3;
     padding-left: 24px;
 }
@@ -260,7 +262,7 @@ ul{
 
 .all-date{
     display: flex;
-    margin-top: 15px;
+    align-content: center;
     align-items: center;
     text-align: center;
     justify-content: center;

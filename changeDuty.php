@@ -7,7 +7,18 @@ if(isset($_SESSION["user_id"])){
     $query = "SELECT * FROM users where id=$user_id";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
+
 }
+
+if(isset($_GET['id'])){
+    $id = filter_var($_GET['id'],FILTER_SANITIZE_NUMBER_INT);
+    $query_show = "SELECT * FROM duties WHERE id=$id";
+    $show_result = mysqli_query($conn,$query_show);
+    $duties = mysqli_fetch_assoc($show_result);
+}else{
+    die();
+}
+
 
 ?>
 
@@ -141,17 +152,20 @@ if(isset($_SESSION["user_id"])){
                 <div class="new-task col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-10 offset-xl-1">
                     <h1 class="edit-header">Edit Duty</h1>  
                     <div>
-                        <div class="task-section form-floating col-xl-6 offset-xl-3">
-                            <input type="text" name="taskHolder" class="form-control" id="floating-task" placeholder="text" maxlength="50" required>
+                        <form method="POST" action="saveDuty.php">
+                            <div class="task-section form-floating col-xl-6 offset-xl-3">
+                            <input type="text" name="duty" class="form-control" value="<?= $duties['duty'] ?>" id="floating-task" placeholder="text" maxlength="50" required>
                             <label for="floating-task"><span class="floating-duty">Change your duty</span></label>
-                            <button type="button" class="btn btn-dark mt-2 col-4 offset-4 col-sm-4 offset-sm-4 col-md-2 offset-md-5 col-lg-2 offset-lg-5  offset-xl-5 btn-save" id="button">Save</button>
+                            <input type="hidden" name="id" value="<?= $duties['id'] ?>">
+                            <button type="submit" name="submit" class="btn btn-dark mt-2 col-4 offset-4 col-sm-4 offset-sm-4 col-md-2 offset-md-5 col-lg-2 offset-lg-5  offset-xl-5 btn-save" id="button">Save</button>
+                            
                             <div class="back-duties mt-2 col-4 offset-4 col-sm-4 offset-sm-4 col-md-4 offset-md-4 col-lg-4 offset-lg-4 col-xl-2 offset-xl-5 text-center">
                                 <a href="duties.php" class="back-duties-text me-2">
                                     <i class="bi bi-chevron-left"></i>
                                     <span class="btn-back">Back</span> 
                                 </a>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
