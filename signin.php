@@ -12,14 +12,27 @@ if(isset($_POST["submit"])){
             $_SESSION["user_id"] = $row["id"];
             $_SESSION["login"] = true;
             $_SESSION["id"] = $row["id"];
+            if(!empty($_POST["remember"])) {
+                setcookie("email", $email, time() + (10 * 365 * 24 * 60 * 60));
+                setcookie("password", $password, time() + (10 * 365 * 24 * 60 * 60));
+            }else{
+                setcookie("email", $email, time() + (-10 * 365 * 24 * 60 * 60));
+                setcookie("password", $password, time() + (-10 * 365 * 24 * 60 * 60));
+            }
             header("Location: index.php");
+            exit();
         }else{
-            echo "<script> alert('Wrong Password'); </script>";
+            $_SESSION['signIn'] = "Wrong password!";
         }
     }else{
-        echo "<script> alert('User Not Registered'); </script>";
+        $_SESSION['signIn'] = "User Not Registered!";
     }
 }
+
+$email = isset($_SESSION['signIn_data']['email']) ? $_SESSION['signIn_data']['email'] : null;
+$password = isset($_SESSION['signIn_data']['password']) ? $_SESSION['signIn_data']['password'] : null;
+unset($_SESSION['signIn_data']);
+
 ?>
 
 <!DOCTYPE html>
@@ -49,24 +62,33 @@ if(isset($_POST["submit"])){
                         <div class="sign-in-form">
                             <h2>Welcome to Duty<span class="glow-hub">Hub</span></h2>
                             <h2>Sign in</h2>
+                            <?php if(isset($_SESSION['signIn'])):?>
+                                <div class="col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2">
+                                    <p class="alert alert-dark alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-exclamation-circle"></i> 
+                                    <strong><?=$_SESSION['signIn']; unset($_SESSION['signIn']);?></strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </p>
+                                </div>
+                            <?php endif ?>
                             <div class="email-section col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2">
                                 <h5>Email</h5>
                                 <div class="form-floating">
-                                    <input type="email" name="email" class="form-control" id="floating-input" placeholder="Email" required>
+                                    <input type="email" name="email" class="form-control" id="floating-input" placeholder="Email" maxlength="255" value="<?php if(isset($_COOKIE["email"])) { echo $_COOKIE["email"]; } ?>" value="<?= $email ?>" required>
                                     <label for="floating-input">user@example.com</label>
                                 </div>
                             </div>
                             <div class="password-section col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2">
                                 <h5>Password</h5>
                                 <div class="form-floating">
-                                    <input type="password" name="password" class="form-control" id="floating-password-signin" placeholder="Password" required>
+                                    <input type="password" name="password" class="form-control" id="floating-password-signin" placeholder="Password" maxlength="128" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>" value="<?= $password ?>" required>
                                     <span onclick="showHidePasswordSignIn()"><i class="bi bi-eye-fill" id="eye0" onclick="changeIconSignIn()"></i></span>
                                     <label for="floating-password-signin">Enter your password</label>
                                 </div>
                             </div>
                             <div class="check-section col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2 d-flex justify-content-between">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <input class="form-check-input" name="remember" type="checkbox" <?php if(isset($_COOKIE["email"]) && isset($_COOKIE["password"])) { ?> checked <?php } ?> id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">Remember me</label>
                                 </div>
                                 <div>
