@@ -8,6 +8,12 @@ if(isset($_POST["submit"])){
     if(mysqli_num_rows($result) > 0){
         $row = mysqli_fetch_assoc($result);
         $correctPassword = $row["password"];
+
+        if($row["token"] > 0) {
+            $updateTokenQuery = "UPDATE users SET token = 0 WHERE email = '$email'";
+            mysqli_query($conn, $updateTokenQuery);
+        }
+
         if(password_verify($password, $correctPassword)) {
             $_SESSION["user_id"] = $row["id"];
             $_SESSION["login"] = true;
@@ -74,16 +80,18 @@ unset($_SESSION['signIn_data']);
                             <div class="email-section col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2">
                                 <h5>Email</h5>
                                 <div class="form-floating">
-                                    <input type="email" name="email" class="form-control" id="floating-input" placeholder="Email" maxlength="255" value="<?php if(isset($_COOKIE["email"])) { echo $_COOKIE["email"]; } ?>" value="<?= $email ?>" required>
+                                    <input type="email" name="email" class="form-control" id="floating-input" placeholder="Email" maxlength="255" value="<?php if(isset($_COOKIE["email"])) { echo $_COOKIE["email"]; } ?>" required>
                                     <label for="floating-input">user@example.com</label>
                                 </div>
                             </div>
                             <div class="password-section col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2">
                                 <h5>Password</h5>
-                                <div class="form-floating">
-                                    <input type="password" name="password" class="form-control" id="floating-password-signin" placeholder="Password" maxlength="128" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>" value="<?= $password ?>" required>
-                                    <span onclick="showHidePasswordSignIn()"><i class="bi bi-eye-fill" id="eye0" onclick="changeIconSignIn()"></i></span>
-                                    <label for="floating-password-signin">Enter your password</label>
+                                <div class="input-group">
+                                    <div class="form-floating">
+                                        <input type="password" name="password" class="form-control" id="floating-password-signin" placeholder="Password" maxlength="128" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>" required>
+                                        <label for="floating-password-signin">Enter your password</label>
+                                    </div>
+                                <button class="btn button-password" type="button" id="btn-password" onclick="showHidePasswordSignIn(); changeIconSignIn()"><i class="bi bi-eye-fill" id="eye0"></i></button>
                                 </div>
                             </div>
                             <div class="check-section col-8 offset-2 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-2 d-flex justify-content-between">

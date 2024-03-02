@@ -1,6 +1,5 @@
 <?php
 require 'config.php';
-
 $email = isset($_SESSION['signUp_data']['email']) ? $_SESSION['signUp_data']['email'] : null;
 $username = isset($_SESSION['signUp_data']['username']) ? $_SESSION['signUp_data']['username'] : null;
 $password = isset($_SESSION['signUp_data']['password']) ? $_SESSION['signUp_data']['password'] : null;
