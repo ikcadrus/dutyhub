@@ -169,16 +169,18 @@ searchButton.addEventListener("click", async () => {
     dateElement.textContent = await showDate(cityName);
 });
 
-englishButton.addEventListener("click", async () => {
-    const cityName = searchBox.value.trim();
-    const dateElement = document.querySelector(".date");
-    dateElement.textContent = await showDate(cityName);
-});
+document.addEventListener('DOMContentLoaded', () => {
+    englishButton.addEventListener("click", async () => {
+        const cityName = searchBox.value.trim();
+        const dateElement = document.querySelector(".date");
+        dateElement.textContent = await showDate(cityName);
+    });
 
-polishButton.addEventListener("click", async () => {
-    const cityName = searchBox.value.trim();
-    const dateElement = document.querySelector(".date");
-    dateElement.textContent = await showDate(cityName);
+    polishButton.addEventListener("click", async () => {
+        const cityName = searchBox.value.trim();
+        const dateElement = document.querySelector(".date");
+        dateElement.textContent = await showDate(cityName);
+    });
 });
 
 
@@ -428,18 +430,20 @@ searchBox.addEventListener("keyup", async function(event) {
     
 });
 
-englishButton.addEventListener("click", async () => {
+document.addEventListener('DOMContentLoaded', () => {
+    englishButton.addEventListener("click", async () => {
     
-    const cityName = searchBox.value.trim();
-    await getHourlyWeather(cityName, apiKey);
-    await getDailyWeather(cityName, apiKey);
+        const cityName = searchBox.value.trim();
+        await getHourlyWeather(cityName, apiKey);
+        await getDailyWeather(cityName, apiKey);
 
-});
+    });
 
-polishButton.addEventListener("click", async () => {
+    polishButton.addEventListener("click", async () => {
     
-    const cityName = searchBox.value.trim();
-    await getHourlyWeather(cityName, apiKey);
-    await getDailyWeather(cityName, apiKey);
+        const cityName = searchBox.value.trim();
+        await getHourlyWeather(cityName, apiKey);
+        await getDailyWeather(cityName, apiKey);
 
+    });
 });
