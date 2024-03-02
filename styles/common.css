@@ -195,9 +195,53 @@ body::-webkit-scrollbar-button {
     box-shadow: inset 0 0 0 0 black, 0 0 4px black;
 }
 
+.dark-mode-nav{
+    font-weight: 500;
+}
+
+a.dropdown-item{
+    padding-top: 5.5px;
+}
+
+a.dropdown-item.flags{
+    padding-top: 4px;
+    display: flex;
+}
+
+.dark-button{
+    padding: 0;
+    color: var(--fontColor);
+}
+
+.language-button{
+    padding: 0;
+    color: var(--fontColor);
+}
+
 #logo_name{
     color: var(--fontColor);
 }
+
+.language-nav{
+    padding-left: 1.25px;
+}
+
+.polish-nav{
+    font-weight: 500;
+}
+
+.english-nav{
+    font-weight: 500;
+}
+
+button#toggle-btn.btn.dark-buutton{
+    display: flex;
+}
+
+button#toggle-btn.btn.language-buutton{
+    display: flex;
+}
+
 
 /* Headers and others*/
 
@@ -283,6 +327,15 @@ p{
     
     .sub-menu{
         height: 38px;
+    }
+
+    a.dropdown-item.flags{
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    #polish_li{
+        margin: 0;
     }
 
 }
