@@ -16,7 +16,7 @@ function whenInputNotFocus(){
 
 }
 
-const apiKey = "e285d7fab5ac96f98a47f755842f9582";
+const apiKey = ""; //Enter your secret key here
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
 const searchBox = document.querySelector(".search-bar input");
