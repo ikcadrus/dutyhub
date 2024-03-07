@@ -61,10 +61,10 @@ unset($_SESSION['code_verify']);
                                     </p>
                                 </div>
                             <?php endif ?>
-                            <div class="email-section col-6 offset-3 mt-3">
+                            <div class="code-section col-6 offset-3 mt-3">
                                 <h5>Code</h5>
                                 <div class="form-floating">
-                                    <input type="text" name="code" class="form-control" id="floating-input" maxlength="6" placeholder="Email" required>
+                                    <input type="text" name="code" class="form-control" id="floating-input" maxlength="6" placeholder="Code" required>
                                     <label for="floating-input">Enter code</label>
                                 </div>
                             </div>
