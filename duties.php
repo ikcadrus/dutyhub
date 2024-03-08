@@ -385,7 +385,7 @@ $error_name = ($language == 0) ? 'Invalid city name' : 'Nieprawidłowa nazwa mie
                         <?php elseif($row['importance'] == 2) :?> style="background-color: #ffc107";>
                         <?php else :?> style="background-color: #dc3545";>
                         <?php endif; ?>
-                            <input class="form-check-input" type="checkbox" id="checkbox" data-id="<?= $row['id'] ?>" name="checked" <?= $row['checked'] == 1 ? 'checked' : ''?> onclick="changeText(this)" value="<?= $row['checked'] ?>">
+                            <input class="form-check-input" type="checkbox" id="checkbox" data-id="<?= $row['id'] ?>" name="checked" <?= $row['checked'] == 1 ? 'checked' : ''?> value="<?= $row['checked'] ?>">
                             <label class="form-check-label" for="checkbox"></label>
                         </div>
                         <div class="duty-date col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">

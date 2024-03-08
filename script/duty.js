@@ -1,22 +1,3 @@
-function changeText() {
-    var checkboxes = document.querySelectorAll('.form-check-input');
-
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
-            var task = checkbox.closest('.duty');
-            var text = task.querySelector('.duty-text');
-
-            if (checkbox.checked) {
-                text.style.textDecoration = 'line-through';
-                text.style.color = '#bdbdbd';
-            } else {
-                text.style.textDecoration = 'none';
-                text.style.color = 'black';
-            }
-        });
-    });
-}
-
 function changeButton(){
 
     var icon = document.getElementById('imp');
@@ -80,11 +61,48 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function changeText(checkbox) {
-    var id = checkbox.getAttribute('data-id');
-    var isChecked = checkbox.checked ? 1 : 0;
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "duties.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("id=" + id + "&checked=" + isChecked);
+    if (checkbox.dataset.id !== undefined) {
+        var id = checkbox.dataset.id;
+        var isChecked = checkbox.checked ? 1 : 0;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "duties.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+            }
+        };
+        xhr.send("id=" + id + "&checked=" + isChecked);
+    } else {
+        console.error("Checkbox does not have 'data-id' attribute.");
+    }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var checkboxes = document.querySelectorAll('.form-check-input');
+
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            var task = checkbox.closest('.duty');
+            var text = task.querySelector('.duty-text');
+
+            if (checkbox.checked) {
+                text.style.textDecoration = 'line-through';
+                text.style.color = '#bdbdbd';
+            } else {
+                text.style.textDecoration = 'none';
+                text.style.color = 'black';
+            }
+
+            changeText(checkbox);
+        });
+
+        if (checkbox.checked) {
+            var task = checkbox.closest('.duty');
+            var text = task.querySelector('.duty-text');
+            text.style.textDecoration = 'line-through';
+            text.style.color = '#bdbdbd';
+        }
+    });
+});
