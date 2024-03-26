@@ -42,6 +42,8 @@ DutyHub is a web application that integrates three key functions, providing user
 
 ## Installation Process
 
+The contents of the application should be in a folder named todo-list
+
 - Install XAMPP tool version 3.3.0.
 - Place the application folder in the XAMPP tool directory named htdocs (\xampp\htdocs).
 - Launch the XAMPP tool.
